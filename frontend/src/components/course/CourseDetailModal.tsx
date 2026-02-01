@@ -1,0 +1,198 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CourseNode } from '@/types/course';
+import { VectorSphere3D } from './VectorSphere3D';
+import { getDifficultyColor } from '@/lib/colorSchemes';
+
+interface CourseDetailModalProps {
+  courseCode: string;
+  onClose: () => void;
+}
+
+export function CourseDetailModal({ courseCode, onClose }: CourseDetailModalProps) {
+  const [courseData, setCourseData] = useState<CourseNode | null>(null);
+  const [allCourses, setAllCourses] = useState<CourseNode[]>([]);
+  const [show3D, setShow3D] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch course data from backend
+    const fetchCourseData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/graph');
+        const data = await response.json();
+
+        const course = data.nodes.find((n: CourseNode) => n.id === courseCode);
+        setCourseData(course || null);
+        setAllCourses(data.nodes);
+      } catch (error) {
+        console.error('Failed to load course data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourseData();
+  }, [courseCode]);
+
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      >
+        <div className="glass-panel rounded-2xl p-8">
+          <div className="text-white">Loading course details...</div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  if (!courseData) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      >
+        <div className="glass-panel rounded-2xl p-8">
+          <div className="text-white">Course not found</div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm p-6"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+          className="glass-panel rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        >
+          {/* Header */}
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-semibold">
+                  {courseData.subject}
+                </span>
+                <h2 className="text-3xl font-bold text-white">{courseData.id}</h2>
+              </div>
+              <h3 className="text-xl text-gray-300">{courseData.title}</h3>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-white hover:text-gray-300 text-4xl leading-none transition-colors"
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Description */}
+          <div className="mb-6">
+            <h4 className="text-lg font-semibold text-white mb-2">Description</h4>
+            <p className="text-gray-300 text-sm leading-relaxed">{courseData.description}</p>
+          </div>
+
+          {/* Metrics */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {/* Difficulty */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-400">Difficulty</span>
+                <span className="text-sm font-semibold text-white">
+                  {courseData.difficulty_score.toFixed(1)}/10
+                </span>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  className="h-full transition-all duration-300"
+                  style={{
+                    width: `${(courseData.difficulty_score / 10) * 100}%`,
+                    backgroundColor: getDifficultyColor(courseData.difficulty_score),
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Enjoyment */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-400">Enjoyment</span>
+                <span className="text-sm font-semibold text-white">
+                  {courseData.enjoyment_score.toFixed(1)}/10
+                </span>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-green-500 transition-all duration-300"
+                  style={{
+                    width: `${(courseData.enjoyment_score / 10) * 100}%`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Graph Metrics */}
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="glass-panel rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-white">
+                {courseData.centrality.toFixed(3)}
+              </div>
+              <div className="text-xs text-gray-400">Centrality</div>
+            </div>
+            <div className="glass-panel rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-white">{courseData.in_degree}</div>
+              <div className="text-xs text-gray-400">Prerequisites</div>
+            </div>
+            <div className="glass-panel rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-white">{courseData.out_degree}</div>
+              <div className="text-xs text-gray-400">Unlocks</div>
+            </div>
+          </div>
+
+          {/* View 3D Vector Sphere Button */}
+          <button
+            onClick={() => setShow3D(true)}
+            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg flex items-center justify-center gap-3"
+          >
+            <span className="text-2xl">🌐</span>
+            <span>View 3D Vector Sphere</span>
+          </button>
+
+          <p className="text-center text-gray-400 text-xs mt-2">
+            Explore connections to related courses in 3D
+          </p>
+        </motion.div>
+      </motion.div>
+
+      {/* 3D Vector Sphere Modal */}
+      <AnimatePresence>
+        {show3D && (
+          <VectorSphere3D
+            course={courseData}
+            allCourses={allCourses}
+            onClose={() => setShow3D(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>CourseGraph Test</h1>
+  <div id="graph"></div>
+  <script>
+    fetch('http://localhost:8000/api/graph')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('graph').innerHTML =
+          `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      });
+  </script>
+</body>
+</html>
