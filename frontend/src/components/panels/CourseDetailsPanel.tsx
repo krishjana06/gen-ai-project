@@ -17,10 +17,10 @@ export function CourseDetailsPanel() {
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="fixed right-0 top-0 h-screen w-96 glass-panel overflow-y-auto z-20"
+        className="fixed right-0 top-0 h-screen w-96 bg-white border-l border-gray-200 shadow-xl overflow-y-auto z-20"
       >
         {/* Header */}
-        <div className="p-6 border-b border-white/10">
+        <div className="p-6 border-b border-gray-200">
           <div className="flex justify-between items-start">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
@@ -30,31 +30,31 @@ export function CourseDetailsPanel() {
                 >
                   {selectedNode.subject}
                 </span>
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-dark-500">
                   {selectedNode.catalog_number}
                 </span>
               </div>
-              <h2 className="text-xl font-bold text-white">{selectedNode.id}</h2>
+              <h2 className="text-xl font-bold text-dark-900">{selectedNode.id}</h2>
             </div>
             <button
               onClick={() => selectNode(null)}
-              className="text-gray-400 hover:text-white text-2xl leading-none"
+              className="text-dark-500 hover:text-dark-900 text-2xl leading-none"
             >
-              ×
+              &times;
             </button>
           </div>
-          <p className="text-sm text-gray-300 mt-2">{selectedNode.title}</p>
+          <p className="text-sm text-dark-500 mt-2">{selectedNode.title}</p>
         </div>
 
         {/* Description */}
-        <div className="p-6 border-b border-white/10">
-          <h3 className="font-semibold text-white mb-2">Description</h3>
-          <p className="text-sm text-gray-300 leading-relaxed">{selectedNode.description}</p>
+        <div className="p-6 border-b border-gray-200">
+          <h3 className="font-semibold text-dark-900 mb-2">Description</h3>
+          <p className="text-sm text-dark-600 leading-relaxed">{selectedNode.description}</p>
         </div>
 
         {/* Metrics */}
-        <div className="p-6 border-b border-white/10 space-y-4">
-          <h3 className="font-semibold text-white mb-3">Student Feedback</h3>
+        <div className="p-6 border-b border-gray-200 space-y-4">
+          <h3 className="font-semibold text-dark-900 mb-3">Student Feedback</h3>
           <MetricBar
             label="Difficulty"
             value={selectedNode.difficulty_score}
@@ -66,12 +66,12 @@ export function CourseDetailsPanel() {
             color={getSubjectColor(selectedNode.subject)}
           />
           {selectedNode.comment_count > 0 && (
-            <p className="text-xs text-gray-400 mt-2">
+            <p className="text-xs text-dark-500 mt-2">
               Based on {selectedNode.comment_count} student reviews
             </p>
           )}
           {selectedNode.comment_count === 0 && (
-            <p className="text-xs text-gray-400 mt-2">
+            <p className="text-xs text-dark-500 mt-2">
               No student reviews available (showing neutral scores)
             </p>
           )}
@@ -79,21 +79,21 @@ export function CourseDetailsPanel() {
 
         {/* Graph Metrics */}
         <div className="p-6">
-          <h3 className="font-semibold text-white mb-3">Graph Metrics</h3>
+          <h3 className="font-semibold text-dark-900 mb-3">Graph Metrics</h3>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-white">{selectedNode.in_degree}</div>
-              <div className="text-xs text-gray-400">Prerequisites</div>
+              <div className="text-2xl font-bold text-dark-900">{selectedNode.in_degree}</div>
+              <div className="text-xs text-dark-500">Prerequisites</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">{selectedNode.out_degree}</div>
-              <div className="text-xs text-gray-400">Unlocks</div>
+              <div className="text-2xl font-bold text-dark-900">{selectedNode.out_degree}</div>
+              <div className="text-xs text-dark-500">Unlocks</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">
+              <div className="text-2xl font-bold text-dark-900">
                 {(selectedNode.centrality * 100).toFixed(1)}
               </div>
-              <div className="text-xs text-gray-400">Centrality</div>
+              <div className="text-xs text-dark-500">Centrality</div>
             </div>
           </div>
         </div>

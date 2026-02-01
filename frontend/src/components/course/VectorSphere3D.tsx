@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { CourseNode } from '@/types/course';
 import { getSubjectColor } from '@/lib/colorSchemes';
 
-// Dynamically import ForceGraph3D to avoid SSR issues
 const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
   ssr: false,
 });
@@ -20,23 +19,17 @@ interface VectorSphere3DProps {
 export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DProps) {
   const graphRef = useRef<any>();
 
-  // Create a focused graph showing the selected course and its connections
   const graphData = useMemo(() => {
-    // For now, since we don't have real prerequisite data, we'll create
-    // connections based on subject similarity and course numbers
-    const nodes = [course]; // Start with selected course
+    const nodes = [course];
     const links: Array<{ source: string; target: string }> = [];
 
-    // Add related courses (same subject, similar level)
     const relatedCourses = allCourses.filter((c) => {
       if (c.id === course.id) return false;
 
-      // Same subject
       if (c.subject === course.subject) {
         const courseLevel = parseInt(course.catalog_number[0]);
         const otherLevel = parseInt(c.catalog_number[0]);
 
-        // Similar level (within 1 level)
         if (Math.abs(courseLevel - otherLevel) <= 1) {
           return true;
         }
@@ -45,11 +38,9 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
       return false;
     });
 
-    // Limit to 15 related courses for performance
     const limitedRelated = relatedCourses.slice(0, 15);
     nodes.push(...limitedRelated);
 
-    // Create links from main course to related courses
     limitedRelated.forEach((related) => {
       links.push({
         source: course.id,
@@ -60,12 +51,10 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
     return { nodes, links };
   }, [course, allCourses]);
 
-  // Auto-rotate the camera on mount
   useEffect(() => {
     if (graphRef.current) {
       const fg = graphRef.current;
 
-      // Center camera on the main course
       const distance = 400;
       const distRatio = 1 + distance / Math.hypot(course.id.length * 10, 100, 100);
 
@@ -75,7 +64,6 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
         1000
       );
 
-      // Slow rotation
       let angle = 0;
       const interval = setInterval(() => {
         angle += 0.005;
@@ -92,16 +80,13 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
   }, [course]);
 
   const getNodeColor = (node: CourseNode) => {
-    // Main course gets bright yellow
     if (node.id === course.id) {
       return '#FFEB3B';
     }
-    // Related courses get subject color
     return getSubjectColor(node.subject);
   };
 
   const getNodeSize = (node: CourseNode) => {
-    // Main course is larger
     if (node.id === course.id) {
       return 15;
     }
@@ -133,25 +118,25 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
         className="relative w-full h-full max-w-6xl max-h-[90vh] m-8"
       >
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 z-10 glass-panel rounded-t-2xl p-6">
+        <div className="absolute top-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm rounded-t-2xl p-6 border-b border-gray-200 shadow-sm">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-2xl font-bold text-white mb-1">
+              <h2 className="text-2xl font-bold text-dark-900 mb-1">
                 {course.id} - Vector Connections
               </h2>
-              <p className="text-gray-300 text-sm">{course.title}</p>
+              <p className="text-dark-500 text-sm">{course.title}</p>
             </div>
             <button
               onClick={onClose}
-              className="text-white hover:text-gray-300 text-4xl leading-none transition-colors"
+              className="text-dark-500 hover:text-dark-900 text-4xl leading-none transition-colors"
             >
-              ×
+              &times;
             </button>
           </div>
         </div>
 
-        {/* 3D Visualization */}
-        <div className="w-full h-full glass-panel rounded-2xl overflow-hidden">
+        {/* 3D Visualization - keep dark background for 3D legibility */}
+        <div className="w-full h-full rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
           <ForceGraph3D
             ref={graphRef}
             graphData={graphData}
@@ -162,32 +147,32 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
             nodeRelSize={1}
             linkDirectionalArrowLength={5}
             linkDirectionalArrowRelPos={1}
-            linkColor={() => 'rgba(66, 165, 245, 0.4)'}
+            linkColor={() => 'rgba(179, 27, 27, 0.4)'}
             linkWidth={2}
-            backgroundColor="#0A1929"
+            backgroundColor="#1a1a2e"
             enableNavigationControls={true}
             showNavInfo={false}
           />
         </div>
 
         {/* Info Footer */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 glass-panel rounded-b-2xl p-4">
+        <div className="absolute bottom-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm rounded-b-2xl p-4 border-t border-gray-200">
           <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4 text-gray-300">
+            <div className="flex items-center gap-4 text-dark-600">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#FFEB3B]" />
                 <span>Selected Course</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#1976D2]" />
+                <div className="w-3 h-3 rounded-full bg-[#B31B1B]" />
                 <span>CS Courses</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#00ACC1]" />
+                <div className="w-3 h-3 rounded-full bg-[#333333]" />
                 <span>MATH Courses</span>
               </div>
             </div>
-            <div className="text-gray-400 text-xs">
+            <div className="text-dark-500 text-xs">
               Showing {graphData.nodes.length - 1} related courses
             </div>
           </div>

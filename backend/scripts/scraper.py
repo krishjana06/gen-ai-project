@@ -29,6 +29,33 @@ DATA_DIR.mkdir(exist_ok=True)
 OUTPUT_FILE = DATA_DIR / "raw_courses.json"
 
 
+def extract_instructors(course_group: dict) -> List[str]:
+    """
+    Extract unique instructor names from a course group's enrollment data.
+
+    The Cornell API nests instructor data inside:
+    enrollGroups[] -> classSections[] -> meetings[] -> instructors[]
+
+    Args:
+        course_group: Raw course group dict from Cornell API
+
+    Returns:
+        List of unique instructor names (first + last)
+    """
+    instructors = set()
+
+    for enroll_group in course_group.get('enrollGroups', []):
+        for section in enroll_group.get('classSections', []):
+            for meeting in section.get('meetings', []):
+                for instructor in meeting.get('instructors', []):
+                    first = instructor.get('firstName', '').strip()
+                    last = instructor.get('lastName', '').strip()
+                    if first and last:
+                        instructors.add(f"{first} {last}")
+
+    return sorted(instructors)
+
+
 def fetch_courses_for_subject(subject: str, roster: str = SEMESTER) -> List[Dict]:
     """
     Fetch all courses for a given subject from Cornell API
@@ -69,6 +96,9 @@ def fetch_courses_for_subject(subject: str, roster: str = SEMESTER) -> List[Dict
                     ''
                 ).strip()
 
+                # Extract instructor names
+                instructors = extract_instructors(course_group)
+
                 courses.append({
                     "course_id": course_id,
                     "subject": subject,
@@ -76,10 +106,13 @@ def fetch_courses_for_subject(subject: str, roster: str = SEMESTER) -> List[Dict
                     "title": title,
                     "description": description,
                     "prerequisites": prerequisites,
+                    "instructors": instructors,
                     "semester": roster
                 })
 
         logger.info(f"✓ Fetched {len(courses)} {subject} courses")
+        instructors_found = sum(1 for c in courses if c['instructors'])
+        logger.info(f"  {instructors_found} courses have instructor data")
 
     except requests.exceptions.RequestException as e:
         logger.error(f"✗ Error fetching {subject} courses: {e}")
@@ -109,6 +142,12 @@ def scrape_all_courses() -> Dict:
     logger.info(f"SUMMARY: Scraped {len(all_courses)} total courses")
     logger.info(f"  - CS: {sum(1 for c in all_courses if c['subject'] == 'CS')} courses")
     logger.info(f"  - MATH: {sum(1 for c in all_courses if c['subject'] == 'MATH')} courses")
+
+    # Count unique instructors
+    all_instructors = set()
+    for c in all_courses:
+        all_instructors.update(c.get('instructors', []))
+    logger.info(f"  - Unique instructors: {len(all_instructors)}")
     logger.info(f"{'='*60}\n")
 
     return {"courses": all_courses}

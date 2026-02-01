@@ -13,12 +13,11 @@ interface CourseNodeData {
 function CourseNodeComponent({ data }: { data: CourseNodeData }) {
   const { code, title, reason, onCourseClick } = data;
 
-  // Determine color based on subject
   const isCS = code.startsWith('CS');
-  const bgColor = isCS ? '#1976D2' : '#00ACC1';
+  const bgColor = isCS ? '#B31B1B' : '#333333';
   const bgGradient = isCS
-    ? 'linear-gradient(135deg, #1976D2 0%, #1565C0 100%)'
-    : 'linear-gradient(135deg, #00ACC1 0%, #00838F 100%)';
+    ? 'linear-gradient(135deg, #B31B1B 0%, #8B1515 100%)'
+    : 'linear-gradient(135deg, #333333 0%, #222222 100%)';
 
   const handleClick = () => {
     if (onCourseClick) {
@@ -39,7 +38,7 @@ function CourseNodeComponent({ data }: { data: CourseNodeData }) {
       />
 
       <div
-        className="rounded-xl shadow-lg border border-white/20 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
+        className="rounded-xl shadow-md border border-black/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105"
         style={{
           background: bgGradient,
         }}

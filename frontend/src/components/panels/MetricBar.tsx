@@ -13,10 +13,10 @@ export function MetricBar({ label, value, maxValue = 10, color }: MetricBarProps
   return (
     <div>
       <div className="flex justify-between items-center mb-1">
-        <span className="text-sm font-medium text-gray-300">{label}</span>
-        <span className="text-sm text-gray-400">{value.toFixed(1)}/{maxValue}</span>
+        <span className="text-sm font-medium text-dark-600">{label}</span>
+        <span className="text-sm text-dark-500">{value.toFixed(1)}/{maxValue}</span>
       </div>
-      <div className="w-full bg-gray-700 rounded-full h-2.5">
+      <div className="w-full bg-gray-100 rounded-full h-2.5">
         <div
           className="h-2.5 rounded-full transition-all duration-300"
           style={{

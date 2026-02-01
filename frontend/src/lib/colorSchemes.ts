@@ -1,23 +1,28 @@
 export const theme = {
   background: {
-    main: '#0A1929',
-    panel: 'rgba(30, 58, 95, 0.7)',
+    main: '#F7F7F7',
+    panel: '#FFFFFF',
     white: '#FFFFFF',
   },
   text: {
-    primary: '#FFFFFF',
-    secondary: '#B2BAC2',
-    muted: '#6B7A90',
+    primary: '#222222',
+    secondary: '#555555',
+    muted: '#888888',
   },
   subjects: {
-    CS: '#1976D2',
-    MATH: '#00ACC1',
+    CS: '#B31B1B',
+    MATH: '#333333',
   },
   difficulty: {
     easy: '#4CAF50',
     medium: '#42A5F5',
     hard: '#FF9800',
     veryHard: '#F44336',
+  },
+  cornell: {
+    red: '#B31B1B',
+    redDark: '#8B1515',
+    carnelian: '#D44A3C',
   },
 };
 

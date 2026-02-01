@@ -2,30 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-.glass-panel {
-  background: rgba(30, 58, 95, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #F7F7F7;
+  color: #222222;
 }
 
-/* Custom scrollbar for chat */
+.glass-panel {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.cornell-gradient {
+  background: linear-gradient(135deg, #B31B1B 0%, #8B1515 100%);
+}
+
+.cornell-gradient-light {
+  background: linear-gradient(135deg, #B31B1B 0%, #D44A3C 100%);
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
+  background: #F1F1F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: #C4C4C4;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: #999999;
 }
 
 /* Animation delays for loading dots */

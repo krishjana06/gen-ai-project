@@ -9,14 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          900: '#0A1929',
-          800: '#132F4C',
-          700: '#1E3A5F',
+        cornell: {
+          red: '#B31B1B',
+          'red-dark': '#8B1515',
+          carnelian: '#D44A3C',
+        },
+        dark: {
+          900: '#222222',
+          800: '#333333',
+          700: '#444444',
+          600: '#555555',
+          500: '#666666',
         },
       },
-      backdropBlur: {
-        xs: '2px',
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

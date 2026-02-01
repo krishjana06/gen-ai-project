@@ -26,16 +26,15 @@ interface SubwayTimelineProps {
 }
 
 export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
-  // Convert timeline data to React Flow nodes and edges
   const { nodes: initialNodes, edges: initialEdges } = useMemo(() => {
     const nodes: Node[] = [];
     const edges: Edge[] = [];
 
-    const semesterSpacing = 400; // Horizontal spacing between semesters
-    const courseSpacing = 120; // Vertical spacing between courses
+    const semesterSpacing = 400;
+    const courseSpacing = 120;
 
     path.semesters.forEach((semester, semesterIdx) => {
-      // Add semester label node
+      // Semester label node
       nodes.push({
         id: `semester-${semesterIdx}`,
         type: 'default',
@@ -43,17 +42,18 @@ export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
         position: { x: semesterIdx * semesterSpacing, y: -80 },
         draggable: false,
         style: {
-          background: 'rgba(30, 58, 95, 0.8)',
-          color: 'white',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+          background: '#FFFFFF',
+          color: '#222222',
+          border: '2px solid #B31B1B',
           borderRadius: '8px',
           padding: '8px 16px',
           fontSize: '14px',
           fontWeight: 'bold',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
         },
       });
 
-      // Add course nodes
+      // Course nodes
       semester.courses.forEach((course, courseIdx) => {
         const nodeId = `${semesterIdx}-${courseIdx}`;
         nodes.push({
@@ -72,7 +72,7 @@ export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
           draggable: true,
         });
 
-        // Connect to previous semester's courses
+        // Connect to previous semester
         if (semesterIdx > 0) {
           const prevSemesterCourses = path.semesters[semesterIdx - 1].courses;
           prevSemesterCourses.forEach((_, prevCourseIdx) => {
@@ -83,7 +83,7 @@ export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
               type: 'smoothstep',
               animated: true,
               style: {
-                stroke: 'rgba(66, 165, 245, 0.4)',
+                stroke: 'rgba(179, 27, 27, 0.3)',
                 strokeWidth: 2,
               },
             });
@@ -104,7 +104,7 @@ export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
   );
 
   return (
-    <div className="w-full h-[600px] bg-[#0A1929] rounded-2xl overflow-hidden border border-white/10">
+    <div className="w-full h-[600px] bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -118,15 +118,15 @@ export function SubwayTimeline({ path, onCourseClick }: SubwayTimelineProps) {
         maxZoom={1.5}
         defaultViewport={{ x: 0, y: 0, zoom: 0.8 }}
       >
-        <Background color="#1E3A5F" gap={16} />
-        <Controls className="bg-white/10 border-white/20" />
+        <Background color="#E5E7EB" gap={16} />
+        <Controls className="bg-white border-gray-200" />
         <MiniMap
           nodeColor={(node) => {
-            if (node.type === 'course') return '#1976D2';
-            return 'rgba(30, 58, 95, 0.8)';
+            if (node.type === 'course') return '#B31B1B';
+            return '#FFFFFF';
           }}
-          maskColor="rgba(10, 25, 41, 0.6)"
-          className="bg-white/10 border-white/20"
+          maskColor="rgba(247, 247, 247, 0.6)"
+          className="bg-white border-gray-200"
         />
       </ReactFlow>
     </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTimelineStore } from '@/stores/timelineStore';
 import { timelineAPI } from '@/lib/api';
+import Image from 'next/image';
 
 export function ChatInterface() {
   const [input, setInput] = useState('');
@@ -25,13 +26,11 @@ export function ChatInterface() {
       setGenerating(true);
       setError(null);
 
-      // Parse completed courses from input or separate field
       const courses = completedCourses
         .split(',')
         .map(c => c.trim())
         .filter(c => c.length > 0);
 
-      // Generate timeline
       const timeline = await timelineAPI.generateTimeline(input, courses);
       setTimelineData(timeline);
 
@@ -48,58 +47,68 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A1929] via-[#132F4C] to-[#0A1929] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[#F7F7F7] flex items-center justify-center p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-3xl"
       >
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-white mb-4">
+        {/* Cornell Header */}
+        <div className="text-center mb-10">
+          <div className="flex justify-center mb-6">
+            <img
+              src="/cornell-logo.svg"
+              alt="Cornell University"
+              width={200}
+              height={60}
+              className="h-14 w-auto"
+            />
+          </div>
+          <h1 className="text-4xl font-bold text-dark-900 mb-3">
             Career Compass
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="text-lg text-dark-500">
             Your personalized Cornell CS course planner
           </p>
+          <div className="w-16 h-1 bg-cornell-red mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Main Input Card */}
-        <div className="glass-panel rounded-3xl p-8 mb-6">
+        <div className="glass-panel rounded-2xl p-8 mb-6">
           <form onSubmit={handleSubmit}>
             {/* Career Goal Input */}
             <div className="mb-4">
-              <label className="block text-white text-sm font-medium mb-2">
-                What's your career goal?
+              <label className="block text-dark-900 text-sm font-semibold mb-2">
+                What&apos;s your career goal?
               </label>
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Example: I want to work at NVIDIA on self-driving cars..."
-                className="w-full h-32 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                className="w-full h-32 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-dark-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cornell-red focus:border-transparent resize-none transition-all"
               />
             </div>
 
             {/* Completed Courses Input */}
             <div className="mb-6">
-              <label className="block text-white text-sm font-medium mb-2">
-                Courses you've completed (optional)
+              <label className="block text-dark-900 text-sm font-semibold mb-2">
+                Courses you&apos;ve completed (optional)
               </label>
               <input
                 type="text"
                 value={completedCourses}
                 onChange={(e) => setCompletedCourses(e.target.value)}
                 placeholder="CS 2110, MATH 1920, CS 2800"
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-dark-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cornell-red focus:border-transparent transition-all"
               />
-              <p className="text-gray-400 text-xs mt-1">Separate multiple courses with commas</p>
+              <p className="text-dark-500 text-xs mt-1">Separate multiple courses with commas</p>
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
               disabled={!input.trim() || isGenerating}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold py-4 rounded-xl hover:from-blue-700 hover:to-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center gap-3"
+              className="w-full cornell-gradient text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md flex items-center justify-center gap-3"
             >
               {isGenerating && (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -111,15 +120,15 @@ export function ChatInterface() {
 
         {/* Suggested Prompts */}
         <div className="space-y-3">
-          <p className="text-gray-400 text-sm text-center">Or try one of these:</p>
+          <p className="text-dark-500 text-sm text-center">Or try one of these:</p>
           <div className="grid grid-cols-1 gap-3">
             {suggestedPrompts.map((prompt, idx) => (
               <motion.button
                 key={idx}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 onClick={() => handleSuggestedPrompt(prompt)}
-                className="glass-panel px-4 py-3 rounded-xl text-left text-gray-300 hover:text-white hover:bg-white/10 transition-all text-sm"
+                className="glass-panel px-4 py-3 rounded-xl text-left text-dark-600 hover:text-cornell-red hover:border-cornell-red/30 transition-all text-sm"
               >
                 {prompt}
               </motion.button>
@@ -128,8 +137,8 @@ export function ChatInterface() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-8 text-gray-500 text-sm">
-          Powered by Gemini AI • 158 Cornell CS & Math Courses
+        <div className="text-center mt-8 text-dark-500 text-sm">
+          Powered by Gemini AI &middot; 158 Cornell CS & Math Courses
         </div>
       </motion.div>
     </div>

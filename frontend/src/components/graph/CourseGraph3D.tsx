@@ -7,7 +7,6 @@ import { CourseNode } from '@/types/course';
 import { getSubjectColor } from '@/lib/colorSchemes';
 import { enhanceGraphForDisplay } from '@/lib/graphUtils';
 
-// Dynamically import ForceGraph3D to avoid SSR issues
 const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
   ssr: false,
 });
@@ -16,33 +15,26 @@ export function CourseGraph3D() {
   const { graphData, selectedNode, highlightedNodes, selectNode } = useGraphStore();
   const graphRef = useRef<any>();
 
-  // Enhance graph data for display (add clustering links if no edges)
   const enhancedData = useMemo(() => {
     if (!graphData) return null;
     return enhanceGraphForDisplay(graphData);
   }, [graphData]);
 
-  // Node styling
   const getNodeColor = (node: CourseNode) => {
-    // Highlighted nodes get red color
     if (highlightedNodes.has(node.id)) {
-      return '#F44336';
+      return '#D44A3C';
     }
-    // Selected node gets brighter color
     if (selectedNode?.id === node.id) {
       return '#FFEB3B';
     }
-    // Normal color based on subject
     return getSubjectColor(node.subject);
   };
 
   const getNodeSize = (node: CourseNode) => {
-    // Size based on centrality score
     return 4 + (node.centrality * 60);
   };
 
   const getNodeOpacity = (node: CourseNode) => {
-    // Opacity based on enjoyment score
     return 0.6 + (node.enjoyment_score / 10) * 0.4;
   };
 
@@ -59,7 +51,6 @@ export function CourseGraph3D() {
     `;
   };
 
-  // Handle node click
   const handleNodeClick = (node: any) => {
     selectNode(node as CourseNode);
   };
@@ -81,9 +72,9 @@ export function CourseGraph3D() {
         onNodeClick={handleNodeClick}
         linkDirectionalArrowLength={3.5}
         linkDirectionalArrowRelPos={1}
-        linkColor={() => 'rgba(255, 255, 255, 0.2)'}
+        linkColor={() => 'rgba(179, 27, 27, 0.3)'}
         linkWidth={0.5}
-        backgroundColor="#0A1929"
+        backgroundColor="#1a1a2e"
         enableNavigationControls={true}
         showNavInfo={false}
       />
