@@ -6,23 +6,21 @@ import re
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
-from google import genai
+from openai import OpenAI
 from app.config.settings import settings
 from app.services.rmp_service import format_course_context
 import logging
-import os
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-# Initialize Gemini client
-if settings.GEMINI_API_KEY:
-    os.environ['GOOGLE_API_KEY'] = settings.GEMINI_API_KEY
-    client = genai.Client()
+# Initialize OpenAI client
+if settings.OPENAI_API_KEY:
+    client = OpenAI(api_key=settings.OPENAI_API_KEY)
 else:
     client = None
-    logger.warning("Gemini API key not configured - chat will return placeholder responses")
+    logger.warning("OpenAI API key not configured - chat will return placeholder responses")
 
 # Regex to extract course codes like "CS 2110" or "MATH 1920"
 COURSE_CODE_PATTERN = re.compile(r'\b(CS|MATH)\s+(\d{4})\b', re.IGNORECASE)
@@ -70,7 +68,7 @@ async def chat(request: ChatRequest):
     """
     if not client:
         return ChatResponse(
-            response="Chat functionality requires a Gemini API key. Please configure GEMINI_API_KEY in your .env file."
+            response="Chat functionality requires an OpenAI API key. Please configure OPENAI_API_KEY in your .env file."
         )
 
     try:
@@ -110,11 +108,16 @@ Student question: {request.message}
 
 Provide a helpful, concise response."""
 
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt
+        response = client.chat.completions.create(
+            model='gpt-4o-mini',
+            messages=[
+                {"role": "system", "content": "You are a helpful Cornell course advisor assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=500
         )
-        return ChatResponse(response=response.text)
+        return ChatResponse(response=response.choices[0].message.content)
 
     except Exception as e:
         logger.error(f"Chat error: {e}")

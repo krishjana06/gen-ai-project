@@ -120,6 +120,26 @@ def get_course_info(course_id: str) -> Optional[Dict]:
     }
 
 
+def get_course_difficulty_enjoyment(course_id: str) -> Optional[Dict]:
+    """
+    Get average difficulty and enjoyment scores for a course from RMP data
+
+    Args:
+        course_id: Course ID (e.g., "CS 2110")
+
+    Returns:
+        Dictionary with avg_difficulty and avg_enjoyment scores (1-10 scale), or None
+    """
+    rmp = get_rmp_data(course_id)
+    if not rmp:
+        return None
+
+    return {
+        "difficulty": rmp.get('avg_difficulty'),
+        "enjoyment": rmp.get('avg_enjoyment'),
+    }
+
+
 def format_course_context(course_ids: List[str]) -> str:
     """
     Format RMP and Reddit data for a list of courses into a context string
@@ -144,7 +164,30 @@ def format_course_context(course_ids: List[str]) -> str:
         if info and info['title']:
             parts.append(f"  Title: {info['title']}")
 
-        # Reddit sentiment
+        # RMP average scores (primary source)
+        rmp = get_rmp_data(course_id)
+        if rmp:
+            if rmp.get('avg_difficulty') and rmp.get('avg_enjoyment'):
+                parts.append(
+                    f"  RateMyProfessor: Avg Difficulty {rmp['avg_difficulty']}/10, "
+                    f"Avg Enjoyment {rmp['avg_enjoyment']}/10"
+                )
+
+            # Individual professor ratings
+            if rmp.get('professors'):
+                for prof in rmp['professors'][:3]:  # Show top 3 professors
+                    rmp_line = f"    → Prof. {prof['name']}"
+                    if prof.get('rating'):
+                        rmp_line += f" — {prof['rating']}/5 rating"
+                    if prof.get('difficulty'):
+                        rmp_line += f", {prof['difficulty']}/5 difficulty"
+                    if prof.get('would_take_again') is not None:
+                        rmp_line += f", {prof['would_take_again']}% would take again"
+                    if prof.get('num_ratings'):
+                        rmp_line += f" ({prof['num_ratings']} ratings)"
+                    parts.append(rmp_line)
+
+        # Reddit sentiment (secondary source)
         reddit = get_reddit_sentiment(course_id)
         if reddit:
             parts.append(
@@ -152,18 +195,6 @@ def format_course_context(course_ids: List[str]) -> str:
                 f"Enjoyment {reddit['enjoyment_score']}/10 "
                 f"({reddit['comment_count']} reviews, {reddit['confidence']} confidence)"
             )
-
-        # RMP data
-        rmp = get_rmp_data(course_id)
-        if rmp and rmp.get('professors'):
-            for prof in rmp['professors']:
-                rmp_line = f"  RateMyProfessor: Prof. {prof['name']}"
-                rmp_line += f" — {prof['rating']}/5 rating"
-                rmp_line += f", {prof['difficulty']}/5 difficulty"
-                if prof.get('would_take_again') is not None:
-                    rmp_line += f", {prof['would_take_again']}% would take again"
-                rmp_line += f" ({prof['num_ratings']} ratings)"
-                parts.append(rmp_line)
 
         if parts:
             context_parts.append(f"[{course_id}]\n" + "\n".join(parts))

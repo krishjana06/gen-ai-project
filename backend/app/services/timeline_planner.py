@@ -1,8 +1,8 @@
 """
-Timeline Planner Service - Generates 3 career path timelines using Gemini AI
+Timeline Planner Service - Generates 3 career path timelines using OpenAI
 """
 
-from google import genai
+from openai import OpenAI
 from typing import List, Dict, Any
 import json
 import os
@@ -16,13 +16,12 @@ class TimelinePlanner:
     """Generate personalized course timelines for different career paths"""
 
     def __init__(self):
-        if settings.GEMINI_API_KEY:
-            os.environ['GOOGLE_API_KEY'] = settings.GEMINI_API_KEY
-            self.client = genai.Client()
+        if settings.OPENAI_API_KEY:
+            self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
         else:
             self.client = None
-            logger.error("Gemini API key not configured")
-            raise ValueError("Gemini API key required for timeline planning")
+            logger.error("OpenAI API key not configured")
+            raise ValueError("OpenAI API key required for timeline planning")
 
     def generate_timelines(
         self,
@@ -51,13 +50,18 @@ class TimelinePlanner:
         )
 
         try:
-            response = self.client.models.generate_content(
-                model='gemini-2.5-flash',
-                contents=prompt
+            response = self.client.chat.completions.create(
+                model='gpt-4o-mini',
+                messages=[
+                    {"role": "system", "content": "You are a Cornell CS course advisor. Return ONLY valid JSON, no markdown."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=2000
             )
 
             # Parse the JSON response
-            result = self._parse_timeline_response(response.text)
+            result = self._parse_timeline_response(response.choices[0].message.content)
             return result
 
         except Exception as e:
@@ -71,10 +75,21 @@ class TimelinePlanner:
         current_semester: str,
         available_courses: List[Dict[str, Any]]
     ) -> str:
-        """Build the prompt for Gemini to generate timelines"""
+        """Build the prompt for OpenAI to generate timelines"""
+
+        # Extract valid course codes from available courses
+        valid_course_codes = []
+        if available_courses:
+            valid_course_codes = [c.get('id', '') for c in available_courses if c.get('id')]
+            valid_codes_str = ', '.join(sorted(valid_course_codes[:50]))  # Show first 50 as examples
+        else:
+            valid_codes_str = "CS 1110, CS 2110, CS 2800, CS 3110, CS 4820, MATH 1920, MATH 2940, etc."
 
         # Simplified prompt for faster response
         prompt = f"""Cornell CS advisor: Create 3 course paths for "{career_goal}". Completed: {', '.join(completed_courses) if completed_courses else 'None'}.
+
+IMPORTANT: Only use courses from this list: {valid_codes_str}
+Do NOT invent course codes. Only use real Cornell courses from the list above.
 
 Paths (4 semesters each, 3-4 courses/semester):
 1. "The Theorist" - Theory/Math → PhD
@@ -123,7 +138,7 @@ Use real Cornell CS/MATH courses. NO markdown, just JSON."""
         return prompt
 
     def _parse_timeline_response(self, response_text: str) -> Dict[str, Any]:
-        """Parse Gemini's JSON response into structured timeline data"""
+        """Parse OpenAI's JSON response into structured timeline data"""
 
         # Remove markdown code blocks if present
         text = response_text.strip()
@@ -151,4 +166,4 @@ Use real Cornell CS/MATH courses. NO markdown, just JSON."""
 
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse timeline JSON: {e}\nResponse: {text}")
-            raise ValueError(f"Invalid JSON response from Gemini: {e}")
+            raise ValueError(f"Invalid JSON response from OpenAI: {e}")

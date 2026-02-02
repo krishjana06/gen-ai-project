@@ -9,6 +9,7 @@ import Image from 'next/image';
 export function ChatInterface() {
   const [input, setInput] = useState('');
   const [completedCourses, setCompletedCourses] = useState('');
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
   const { setTimelineData, setGenerating, setError, isGenerating } = useTimelineStore();
 
   const suggestedPrompts = [
@@ -23,6 +24,13 @@ export function ChatInterface() {
     if (!input.trim()) return;
 
     try {
+      // Set local loading state first for immediate button feedback
+      setIsButtonLoading(true);
+
+      // Delay to show button animation before page transition
+      await new Promise(resolve => setTimeout(resolve, 600));
+
+      // Then set global state which triggers page transition
       setGenerating(true);
       setError(null);
 
@@ -38,6 +46,7 @@ export function ChatInterface() {
       console.error('Timeline generation error:', error);
       setError(error.message || 'Failed to generate timeline');
     } finally {
+      setIsButtonLoading(false);
       setGenerating(false);
     }
   };
@@ -107,13 +116,25 @@ export function ChatInterface() {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={!input.trim() || isGenerating}
-              className="w-full cornell-gradient text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md flex items-center justify-center gap-3"
+              disabled={!input.trim() || isButtonLoading}
+              className="w-full cornell-gradient text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md flex items-center justify-center gap-3 relative overflow-hidden"
             >
-              {isGenerating && (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              {isButtonLoading && (
+                <>
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                  {/* Bouncing dots */}
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </>
               )}
-              <span>{isGenerating ? 'Generating Your Paths...' : 'Generate My Timeline Paths'}</span>
+              <span className={isButtonLoading ? 'animate-pulse' : ''}>
+                {isButtonLoading ? 'Generating Your Paths...' : 'Generate My Timeline Paths'}
+              </span>
             </button>
           </form>
         </div>
@@ -138,7 +159,7 @@ export function ChatInterface() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-dark-500 text-sm">
-          Powered by Gemini AI &middot; 158 Cornell CS & Math Courses
+          Powered by OpenAI &middot; 158 Cornell CS & Math Courses
         </div>
       </motion.div>
     </div>

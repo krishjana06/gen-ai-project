@@ -1,0 +1,26 @@
+{
+  "name": "career-compass",
+  "version": "1.0.0",
+  "description": "Cornell CS Course Planning Tool",
+  "scripts": {
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"./start-backend.sh\" \"./start-frontend.sh\"",
+    "backend": "./start-backend.sh",
+    "frontend": "./start-frontend.sh",
+    "install:all": "cd backend && pip install -r requirements.txt && cd ../frontend && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "kill": "pkill -f 'uvicorn' && pkill -f 'next'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "cornell",
+    "course-planning",
+    "ai",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT"
+}

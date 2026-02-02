@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTimelineStore } from '@/stores/timelineStore';
 import { ChatInterface } from '@/components/chat/ChatInterface';
@@ -7,12 +8,30 @@ import { TimelineView } from '@/components/timeline/TimelineView';
 
 export default function HomePage() {
   const { timelineData, isGenerating, error } = useTimelineStore();
+  const [showFullscreenLoading, setShowFullscreenLoading] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (isGenerating) {
+      // Delay showing the fullscreen loading to let button animation be visible
+      timeout = setTimeout(() => {
+        setShowFullscreenLoading(true);
+      }, 800);
+    } else {
+      setShowFullscreenLoading(false);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [isGenerating]);
 
   return (
     <main className="relative w-full min-h-screen bg-[#F7F7F7]">
       <AnimatePresence>
         {/* Loading State */}
-        {isGenerating && (
+        {showFullscreenLoading && (
           <motion.div
             key="loading"
             initial={{ opacity: 0 }}
@@ -61,7 +80,7 @@ export default function HomePage() {
         )}
 
         {/* Main Content: Chat Interface or Timeline View */}
-        {!isGenerating && !error && (
+        {!showFullscreenLoading && !error && (
           <motion.div
             key={timelineData ? 'timeline' : 'chat'}
             initial={{ opacity: 0 }}

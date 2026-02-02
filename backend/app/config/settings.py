@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     """Application settings"""
 
     # API Keys
-    GEMINI_API_KEY: str = ""
+    OPENAI_API_KEY: str = ""
     REDDIT_CLIENT_ID: str = ""
     REDDIT_CLIENT_SECRET: str = ""
     REDDIT_USER_AGENT: str = "CourseGraph:v1.0"
