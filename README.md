@@ -1,4 +1,4 @@
-# Career Compass 🎓
+# CourseGraph 🎓
 
 Cornell CS & Math course planning tool powered by AI.
 
