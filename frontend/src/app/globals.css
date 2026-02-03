@@ -6,14 +6,16 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #F7F7F7;
+  background: linear-gradient(135deg, #FAF9F6 0%, #F5F3EE 100%);
+  background-attachment: fixed;
   color: #222222;
 }
 
 .glass-panel {
-  background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #FEFDFB 0%, #FCFAF7 100%);
+  border: 1px solid #E8E6E1;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 3px -1px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .cornell-gradient {

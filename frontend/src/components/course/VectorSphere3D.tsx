@@ -120,11 +120,22 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm rounded-t-2xl p-6 border-b border-gray-200 shadow-sm">
           <div className="flex justify-between items-center">
-            <div>
-              <h2 className="text-2xl font-bold text-dark-900 mb-1">
-                {course.id} - Vector Connections
-              </h2>
-              <p className="text-dark-500 text-sm">{course.title}</p>
+            <div className="flex items-center gap-4">
+              {/* Cornell Logo */}
+              <div className="flex-shrink-0">
+                <img
+                  src="/cornell-logo.svg"
+                  alt="Cornell University"
+                  className="h-10 w-auto"
+                />
+              </div>
+              <div className="w-px h-10 bg-gray-300"></div>
+              <div>
+                <h2 className="text-2xl font-bold text-dark-900 mb-1">
+                  {course.id} - Vector Connections
+                </h2>
+                <p className="text-dark-500 text-sm">{course.title}</p>
+              </div>
             </div>
             <button
               onClick={onClose}

@@ -18,6 +18,7 @@ class TimelineRequest(BaseModel):
     career_goal: str
     completed_courses: List[str] = []
     current_semester: Optional[str] = "Sophomore Fall"
+    resume_data: Optional[Dict[str, Any]] = None  # Optional resume analysis data
 
 
 class TimelineResponse(BaseModel):

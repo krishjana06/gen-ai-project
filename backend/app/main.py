@@ -5,7 +5,7 @@ CourseGraph FastAPI Backend
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.settings import settings
-from app.api import graph, chat, timeline
+from app.api import graph, chat, timeline, resume, job_matcher, study_materials
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -27,6 +27,9 @@ app.add_middleware(
 app.include_router(graph.router, prefix="/api", tags=["Graph"])
 app.include_router(chat.router, prefix="/api", tags=["Chat"])
 app.include_router(timeline.router, prefix="/api", tags=["Timeline"])
+app.include_router(resume.router, prefix="/api", tags=["Resume"])
+app.include_router(job_matcher.router, prefix="/api", tags=["Job Matcher"])
+app.include_router(study_materials.router, prefix="/api", tags=["Study Materials"])
 
 
 @app.get("/")

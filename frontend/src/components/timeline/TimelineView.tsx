@@ -6,6 +6,7 @@ import { useTimelineStore } from '@/stores/timelineStore';
 import { TimelineTabs } from './TimelineTabs';
 import { SubwayTimeline } from './SubwayTimeline';
 import { CourseDetailModal } from '@/components/course/CourseDetailModal';
+import { TimelineStudyMaterials } from './TimelineStudyMaterials';
 
 export function TimelineView() {
   const { timelineData, selectedPath, reset } = useTimelineStore();
@@ -24,7 +25,7 @@ export function TimelineView() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F7F7] p-6">
+    <div className="min-h-screen p-6">
       {/* Cornell Header Bar */}
       <div className="cornell-gradient rounded-2xl px-8 py-4 mb-6 max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -96,22 +97,7 @@ export function TimelineView() {
         </motion.div>
 
         {/* Study Materials Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="mt-8"
-        >
-          <h2 className="text-2xl font-bold text-dark-900 mb-4">Recommended Study Materials</h2>
-          <div className="grid grid-cols-3 gap-4">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="glass-panel rounded-xl p-6 text-center">
-                <div className="text-4xl mb-3">📚</div>
-                <div className="text-dark-500 text-sm">Material cards coming soon</div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        <TimelineStudyMaterials semesters={currentPath.semesters} />
       </div>
 
       {/* Course Detail Modal */}
