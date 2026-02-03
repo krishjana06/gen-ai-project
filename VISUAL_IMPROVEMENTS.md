@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Career Compass interface has been updated with a **warmer, more sophisticated color palette** to reduce the stark white appearance and create a more appealing, professional look.
+The CourseGraph interface has been updated with a **warmer, more sophisticated color palette** to reduce the stark white appearance and create a more appealing, professional look.
 
 ## Changes Made
 
@@ -188,7 +188,7 @@ Potential additions while maintaining warmth:
 
 ## Summary
 
-The new warm color scheme transforms Career Compass from a stark, clinical interface to a **warm, sophisticated, professional application** that's easier on the eyes and more inviting to use, while maintaining academic credibility and Cornell branding.
+The new warm color scheme transforms CourseGraph from a stark, clinical interface to a **warm, sophisticated, professional application** that's easier on the eyes and more inviting to use, while maintaining academic credibility and Cornell branding.
 
 The changes are:
 - **Subtle**: Won't distract from content

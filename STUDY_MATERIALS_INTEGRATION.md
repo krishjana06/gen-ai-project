@@ -295,7 +295,7 @@ Potential improvements:
 
 ## Summary
 
-The study materials integration transforms Career Compass from a planning tool into a complete learning platform. By providing timeline-specific resources, students get exactly what they need to succeed in their chosen courses - no more, no less.
+The study materials integration transforms CourseGraph from a planning tool into a complete learning platform. By providing timeline-specific resources, students get exactly what they need to succeed in their chosen courses - no more, no less.
 
 The integration is:
 - **Contextual**: Materials match the user's timeline

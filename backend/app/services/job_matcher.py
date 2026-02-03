@@ -2,9 +2,7 @@ import json
 import re
 from typing import Dict, Any, List
 import openai
-from ..config.settings import get_settings
-
-settings = get_settings()
+from ..config.settings import settings
 
 class JobMatcherService:
     """Service for matching job descriptions with Cornell CS/Math courses."""

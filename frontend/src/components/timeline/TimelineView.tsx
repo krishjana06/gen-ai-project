@@ -30,12 +30,12 @@ export function TimelineView() {
       <div className="cornell-gradient rounded-2xl px-8 py-4 mb-6 max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img
-            src="/cornell-logo.svg"
-            alt="Cornell"
-            className="h-8 w-auto brightness-0 invert"
+            src="/cornell-bear.png"
+            alt="Cornell Bear"
+            className="h-10 w-auto"
           />
           <div className="w-px h-8 bg-white/30"></div>
-          <span className="text-white font-semibold">Career Compass</span>
+          <span className="text-white font-semibold">CourseGraph</span>
         </div>
         <button
           onClick={handleNewSearch}

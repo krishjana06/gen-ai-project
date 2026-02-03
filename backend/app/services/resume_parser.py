@@ -4,9 +4,7 @@ from typing import Dict, Any, List
 import PyPDF2
 import docx
 import openai
-from ..config.settings import get_settings
-
-settings = get_settings()
+from ..config.settings import settings
 
 class ResumeParser:
     """Service for parsing and analyzing resume files using OpenAI."""
@@ -132,10 +130,10 @@ Return ONLY valid JSON."""
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"Analyze this resume:\n\n{text[:4000]}"}  # Limit to 4000 chars
+                    {"role": "user", "content": f"Analyze this resume:\n\n{text[:2000]}"}  # Reduced from 4000 to 2000 chars for speed
                 ],
-                temperature=0.3,
-                max_tokens=1000
+                temperature=0.1,  # Lower temp for faster, more deterministic responses
+                max_tokens=600  # Reduced from 1000 to 600 for faster generation
             )
 
             result_text = response.choices[0].message.content.strip()

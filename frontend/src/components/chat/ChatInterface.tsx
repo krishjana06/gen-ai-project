@@ -65,17 +65,17 @@ export function ChatInterface() {
       >
         {/* Cornell Header */}
         <div className="text-center mb-10">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center items-center mb-6">
             <img
               src="/cornell-logo.svg"
               alt="Cornell University"
               width={200}
               height={60}
-              className="h-14 w-auto"
+              className="h-14 w-auto mx-auto"
             />
           </div>
           <h1 className="text-4xl font-bold text-dark-900 mb-3">
-            Career Compass
+            CourseGraph
           </h1>
           <p className="text-lg text-dark-500 mb-4">
             Your personalized Cornell CS course planner

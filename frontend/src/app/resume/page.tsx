@@ -23,7 +23,7 @@ export default function ResumePage() {
               <span className="text-white font-bold text-xl">C</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-dark-700">Career Compass</h1>
+              <h1 className="text-2xl font-bold text-dark-700">CourseGraph</h1>
               <p className="text-sm text-dark-500">Resume-Based Timeline Planner</p>
             </div>
           </div>

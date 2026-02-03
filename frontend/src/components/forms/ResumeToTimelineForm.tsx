@@ -144,6 +144,9 @@ export default function ResumeToTimelineForm() {
       const timelineData = await response.json();
       setTimelineData(timelineData);
 
+      // Small delay to ensure state is updated before navigation
+      await new Promise(resolve => setTimeout(resolve, 300));
+
       // Navigate to timeline view
       router.push('/');
     } catch (err) {
@@ -171,9 +174,9 @@ export default function ResumeToTimelineForm() {
   };
 
   const currentStep = parsing
-    ? 'Analyzing resume...'
+    ? 'Analyzing resume... (AI extracting your skills & goals)'
     : generating
-    ? 'Generating personalized timeline...'
+    ? 'Generating personalized timeline... (Creating 3 career paths)'
     : uploading
     ? 'Processing...'
     : '';

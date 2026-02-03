@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Career Compass app now provides **difficulty** and **enjoyment** scores for all 158 Cornell CS and Math courses based on Rate My Professor data.
+The CourseGraph app now provides **difficulty** and **enjoyment** scores for all 158 Cornell CS and Math courses based on Rate My Professor data.
 
 ## How It Works
 

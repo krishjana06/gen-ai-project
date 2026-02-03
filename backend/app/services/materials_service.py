@@ -2,9 +2,7 @@ import json
 import re
 from typing import Dict, Any, List, Optional
 import openai
-from ..config.settings import get_settings
-
-settings = get_settings()
+from ..config.settings import settings
 
 class MaterialsService:
     """Service for generating and curating study materials for courses."""

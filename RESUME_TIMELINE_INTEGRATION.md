@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Career Compass app now supports **automatic timeline generation from resume uploads**. Users can upload their resume (PDF, DOCX, or TXT) and the system will:
+The CourseGraph app now supports **automatic timeline generation from resume uploads**. Users can upload their resume (PDF, DOCX, or TXT) and the system will:
 
 1. Extract text and keywords from the resume
 2. Identify skills, completed courses, career goals, and interests using AI

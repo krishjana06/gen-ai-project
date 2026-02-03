@@ -26,7 +26,7 @@ export default function FeaturesPage() {
               <span className="text-white font-bold text-xl">C</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-dark-700">Career Compass</h1>
+              <h1 className="text-2xl font-bold text-dark-700">CourseGraph</h1>
               <p className="text-sm text-dark-500">New Features Demo</p>
             </div>
           </div>
@@ -251,7 +251,7 @@ export default function FeaturesPage() {
         <div className="glass-panel rounded-xl p-6 text-center">
           <h3 className="font-semibold text-dark-700 mb-2">Ready to Get Started?</h3>
           <p className="text-sm text-dark-500 mb-4">
-            These features are now integrated into Career Compass to help you plan your academic journey.
+            These features are now integrated into CourseGraph to help you plan your academic journey.
           </p>
           <button className="cornell-gradient text-white font-semibold px-8 py-3 rounded-xl hover:shadow-lg transition-shadow">
             Back to Timeline Planner

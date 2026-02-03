@@ -1,6 +1,6 @@
 # New Features Documentation
 
-This document describes the three new features added to Career Compass: Resume Upload, Job Description Matcher, and Study Materials Cards.
+This document describes the three new features added to CourseGraph: Resume Upload, Job Description Matcher, and Study Materials Cards.
 
 ## Table of Contents
 
@@ -444,7 +444,7 @@ frontend/
 - Resume files are processed in memory and not stored permanently
 - Study materials are generated on-demand and may vary
 - Job matching uses a subset of Cornell CS/Math courses
-- All components follow the existing Career Compass design system
+- All components follow the existing CourseGraph design system
 
 ---
 
