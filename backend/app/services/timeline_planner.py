@@ -28,7 +28,8 @@ class TimelinePlanner:
         career_goal: str,
         completed_courses: List[str],
         current_semester: str = "Sophomore Fall",
-        available_courses: List[Dict[str, Any]] = None
+        available_courses: List[Dict[str, Any]] = None,
+        prerequisites: Dict[str, List[str]] = None
     ) -> Dict[str, Any]:
         """
         Generate 3 distinct timeline paths based on user's career goal
@@ -38,6 +39,7 @@ class TimelinePlanner:
             completed_courses: List of course codes already taken (e.g., ["CS 2110", "MATH 1920"])
             current_semester: Current academic standing
             available_courses: List of all available courses with metadata
+            prerequisites: Dict mapping course code to list of prerequisite course codes
 
         Returns:
             Dict with 3 timeline paths: theorist, engineer, balanced
@@ -46,7 +48,8 @@ class TimelinePlanner:
             career_goal,
             completed_courses,
             current_semester,
-            available_courses
+            available_courses,
+            prerequisites
         )
 
         try:
@@ -73,7 +76,8 @@ class TimelinePlanner:
         career_goal: str,
         completed_courses: List[str],
         current_semester: str,
-        available_courses: List[Dict[str, Any]]
+        available_courses: List[Dict[str, Any]],
+        prerequisites: Dict[str, List[str]] = None
     ) -> str:
         """Build the prompt for OpenAI to generate timelines"""
 
@@ -81,16 +85,54 @@ class TimelinePlanner:
         valid_course_codes = []
         if available_courses:
             valid_course_codes = [c.get('id', '') for c in available_courses if c.get('id')]
-            valid_codes_str = ', '.join(sorted(valid_course_codes[:50]))  # Show first 50 as examples
-        else:
-            valid_codes_str = "CS 1110, CS 2110, CS 2800, CS 3110, CS 4820, MATH 1920, MATH 2940, etc."
 
-        # Simplified prompt for faster response
-        prompt = f"""Cornell CS advisor: Create 3 course paths for "{career_goal}". Completed: {', '.join(completed_courses) if completed_courses else 'None'}.
+        cs_courses = sorted([c for c in valid_course_codes if c.startswith('CS')])
+        math_courses = sorted([c for c in valid_course_codes if c.startswith('MATH')])
+        valid_codes_str = ', '.join(cs_courses[:40] + math_courses[:30])
+
+        # Build prerequisite chains for key courses
+        prereq_section = ""
+        if prerequisites:
+            # Key prerequisite chains to highlight
+            key_chains = [
+                ["CS 1110", "CS 2110", "CS 3110", "CS 4820"],
+                ["CS 1110", "CS 2110", "CS 3110", "CS 4110", "CS 4411"],
+                ["CS 1110", "CS 2110", "CS 3410", "CS 4210"],
+                ["CS 1110", "CS 2110", "CS 3700"],
+                ["MATH 1110", "MATH 1120", "MATH 1910", "MATH 1920", "MATH 2210", "MATH 2940"],
+                ["MATH 1920", "MATH 2210", "MATH 3110", "MATH 4130"],
+            ]
+            chains_str = "\n".join(["  " + " → ".join(chain) for chain in key_chains])
+
+            # Build per-course prereqs for courses with multiple prereqs
+            multi_prereqs = {k: v for k, v in prerequisites.items() if len(v) >= 2}
+            multi_str = "\n".join([f"  {k} requires: {', '.join(v)}" for k, v in sorted(multi_prereqs.items())])
+
+            prereq_section = f"""
+PREREQUISITE CHAINS (earlier courses MUST appear in earlier semesters):
+{chains_str}
+
+Courses with multiple prerequisites:
+{multi_str}
+
+CRITICAL ORDERING RULES:
+- A course can ONLY be taken AFTER all its prerequisites are taken (in a previous semester).
+- If the student has already completed a prerequisite, it does not need to appear in the timeline.
+- Do NOT place CS 4820 before CS 3110. Do NOT place CS 4110 before CS 3110.
+- Do NOT place CS 4411 before CS 4110. Do NOT place CS 4210 before CS 3410.
+- Do NOT place MATH 2940 before MATH 2210. Do NOT place MATH 2210 before MATH 1920.
+"""
+
+        # Build completed courses context
+        completed_str = ', '.join(completed_courses) if completed_courses else 'None'
+
+        prompt = f"""Cornell CS & MATH course advisor: Create 3 course timeline paths for "{career_goal}".
+Already completed: {completed_str}.
 
 IMPORTANT: Only use courses from this list: {valid_codes_str}
 Do NOT invent course codes. Only use real Cornell courses from the list above.
-
+Each path MUST include a mix of both CS and MATH courses (at least 2 MATH courses per path).
+{prereq_section}
 Paths (4 semesters each, 3-4 courses/semester):
 1. "The Theorist" - Theory/Math → PhD
 2. "The Engineer" - Systems/Practice → Industry
@@ -111,7 +153,7 @@ Return ONLY this JSON:
       "semesters": [
         {{
           "name": "Sophomore Spring",
-          "courses": [{{"code": "CS 4820", "title": "Algorithms", "reason": "short reason"}}]
+          "courses": [{{"code": "CS 3110", "title": "Functional Programming", "reason": "short reason"}}]
         }},
         {{"name": "Junior Fall", "courses": [...]}},
         {{"name": "Junior Spring", "courses": [...]}},
@@ -122,18 +164,18 @@ Return ONLY this JSON:
       "title": "The Engineer",
       "description": "1 sentence",
       "target_career": "Software Engineer",
-      "semesters": [same 4 semesters]
+      "semesters": [same 4 semesters structure]
     }},
     "balanced": {{
       "title": "The Balanced",
       "description": "1 sentence",
       "target_career": "Versatile roles",
-      "semesters": [same 4 semesters]
+      "semesters": [same 4 semesters structure]
     }}
   }}
 }}
 
-Use real Cornell CS/MATH courses. NO markdown, just JSON."""
+NO markdown, just JSON."""
 
         return prompt
 

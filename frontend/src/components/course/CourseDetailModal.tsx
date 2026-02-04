@@ -149,22 +149,42 @@ export function CourseDetailModal({ courseCode, onClose }: CourseDetailModalProp
             </div>
           </div>
 
-          {/* Graph Metrics */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="glass-panel rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-dark-900">
-                {courseData.centrality.toFixed(3)}
+          {/* Prerequisites */}
+          <div className="mb-4">
+            <h4 className="text-sm font-semibold text-dark-900 mb-2">Prerequisites</h4>
+            {courseData.prerequisites && courseData.prerequisites.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {courseData.prerequisites.map((prereq) => {
+                  const prereqCourse = allCourses.find(c => c.id === prereq);
+                  return (
+                    <span key={prereq} className="px-3 py-1 bg-cornell-red/10 border border-cornell-red/20 rounded-full text-cornell-red text-sm font-medium">
+                      {prereq}{prereqCourse ? ` – ${prereqCourse.title}` : ''}
+                    </span>
+                  );
+                })}
               </div>
-              <div className="text-xs text-dark-500">Centrality</div>
-            </div>
-            <div className="glass-panel rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-dark-900">{courseData.in_degree}</div>
-              <div className="text-xs text-dark-500">Prerequisites</div>
-            </div>
-            <div className="glass-panel rounded-xl p-4 text-center">
-              <div className="text-2xl font-bold text-dark-900">{courseData.out_degree}</div>
-              <div className="text-xs text-dark-500">Unlocks</div>
-            </div>
+            ) : (
+              <p className="text-sm text-dark-500 italic">None</p>
+            )}
+          </div>
+
+          {/* Unlocks */}
+          <div className="mb-6">
+            <h4 className="text-sm font-semibold text-dark-900 mb-2">Unlocks</h4>
+            {courseData.unlocks && courseData.unlocks.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {courseData.unlocks.map((unlocked) => {
+                  const unlockedCourse = allCourses.find(c => c.id === unlocked);
+                  return (
+                    <span key={unlocked} className="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-blue-600 text-sm font-medium">
+                      {unlocked}{unlockedCourse ? ` – ${unlockedCourse.title}` : ''}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="text-sm text-dark-500 italic">None</p>
+            )}
           </div>
 
           {/* View 3D Vector Sphere Button */}

@@ -11,6 +11,8 @@ export interface CourseNode {
   in_degree: number;
   out_degree: number;
   centrality: number;
+  prerequisites?: string[];
+  unlocks?: string[];
 }
 
 export interface GraphEdge {

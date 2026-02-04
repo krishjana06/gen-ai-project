@@ -47,13 +47,22 @@ async def plan_timeline(request: TimelineRequest):
         except Exception as e:
             logger.warning(f"Could not load course data: {e}")
 
+        # Load prerequisites
+        prereqs = {}
+        try:
+            with open('/Users/krishjana/Desktop/gen-ai-project/backend/data/prerequisites.json', 'r') as f:
+                prereqs = json.load(f)
+        except Exception as e:
+            logger.warning(f"Could not load prerequisites: {e}")
+
         # Generate timelines
         planner = TimelinePlanner()
         result = planner.generate_timelines(
             career_goal=request.career_goal,
             completed_courses=request.completed_courses,
             current_semester=request.current_semester,
-            available_courses=available_courses
+            available_courses=available_courses,
+            prerequisites=prereqs
         )
 
         return TimelineResponse(

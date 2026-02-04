@@ -15,6 +15,7 @@ router = APIRouter()
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
 GRAPH_FILE = DATA_DIR / "graph_data.json"
 RMP_FILE = DATA_DIR / "rmp_data.json"
+PREREQ_FILE = DATA_DIR / "prerequisites.json"
 
 
 @router.get("/graph")
@@ -51,12 +52,41 @@ async def get_graph():
             course_id = node.get('id')
             if course_id and course_id in rmp_data:
                 rmp_course = rmp_data[course_id]
-                # Override difficulty and enjoyment with RMP scores
                 if rmp_course.get('avg_difficulty') is not None:
                     node['difficulty_score'] = rmp_course['avg_difficulty']
                 if rmp_course.get('avg_enjoyment') is not None:
                     node['enjoyment_score'] = rmp_course['avg_enjoyment']
-                # Add source indicator
                 node['score_source'] = 'rmp'
+
+    # Merge prerequisite data into nodes and populate links
+    prereqs = {}
+    if PREREQ_FILE.exists():
+        try:
+            with open(PREREQ_FILE, 'r') as f:
+                prereqs = json.load(f)
+        except Exception as e:
+            logger.warning(f"Failed to load prerequisites: {e}")
+
+    if prereqs:
+        # Build reverse map: course -> list of courses it unlocks
+        unlocks_map: dict = {}
+        for course_id, prereq_list in prereqs.items():
+            for prereq in prereq_list:
+                unlocks_map.setdefault(prereq, []).append(course_id)
+
+        # Add prerequisites/unlocks arrays and update degree counts
+        for node in graph_data.get('nodes', []):
+            course_id = node.get('id')
+            node['prerequisites'] = prereqs.get(course_id, [])
+            node['unlocks'] = unlocks_map.get(course_id, [])
+            node['in_degree'] = len(node['prerequisites'])
+            node['out_degree'] = len(node['unlocks'])
+
+        # Populate links array from prerequisites
+        links = []
+        for course_id, prereq_list in prereqs.items():
+            for prereq in prereq_list:
+                links.append({"source": prereq, "target": course_id})
+        graph_data['links'] = links
 
     return graph_data
