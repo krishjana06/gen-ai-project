@@ -1,0 +1,1266 @@
+{
+  "CS 1110": {
+    "course_id": "CS 1110",
+    "subject": "CS",
+    "title": "Introduction to Computing: A Design and Development Perspective",
+    "avg_difficulty": 5.7,
+    "avg_enjoyment": 7.3,
+    "professors": []
+  },
+  "CS 1112": {
+    "course_id": "CS 1112",
+    "subject": "CS",
+    "title": "Introduction to Computing: An Engineering and Science Perspective",
+    "avg_difficulty": 5.7,
+    "avg_enjoyment": 7.2,
+    "professors": []
+  },
+  "CS 1132": {
+    "course_id": "CS 1132",
+    "subject": "CS",
+    "title": "Short Course in MATLAB",
+    "avg_difficulty": 5.7,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "CS 1133": {
+    "course_id": "CS 1133",
+    "subject": "CS",
+    "title": "Short Course in Python",
+    "avg_difficulty": 6.3,
+    "avg_enjoyment": 6.3,
+    "professors": []
+  },
+  "CS 1710": {
+    "course_id": "CS 1710",
+    "subject": "CS",
+    "title": "Introduction to Cognitive Science",
+    "avg_difficulty": 5.7,
+    "avg_enjoyment": 6.8,
+    "professors": []
+  },
+  "CS 1998": {
+    "course_id": "CS 1998",
+    "subject": "CS",
+    "title": "First-year and Nontechnical Team Projects",
+    "avg_difficulty": 6.7,
+    "avg_enjoyment": 7.4,
+    "professors": []
+  },
+  "CS 2024": {
+    "course_id": "CS 2024",
+    "subject": "CS",
+    "title": "C++ Programming",
+    "avg_difficulty": 7.1,
+    "avg_enjoyment": 6.8,
+    "professors": []
+  },
+  "CS 2110": {
+    "course_id": "CS 2110",
+    "subject": "CS",
+    "title": "Object-Oriented Programming and Data Structures",
+    "avg_difficulty": 7.4,
+    "avg_enjoyment": 7.6,
+    "professors": []
+  },
+  "CS 2112": {
+    "course_id": "CS 2112",
+    "subject": "CS",
+    "title": "Object-Oriented Design and Data Structures - Honors",
+    "avg_difficulty": 7.4,
+    "avg_enjoyment": 7.3,
+    "professors": []
+  },
+  "CS 2800": {
+    "course_id": "CS 2800",
+    "subject": "CS",
+    "title": "Mathematical Foundations of Computing",
+    "avg_difficulty": 6.9,
+    "avg_enjoyment": 6.9,
+    "professors": []
+  },
+  "CS 2850": {
+    "course_id": "CS 2850",
+    "subject": "CS",
+    "title": "Networks",
+    "avg_difficulty": 7.2,
+    "avg_enjoyment": 6.8,
+    "professors": []
+  },
+  "CS 3110": {
+    "course_id": "CS 3110",
+    "subject": "CS",
+    "title": "Data Structures and Functional Programming",
+    "avg_difficulty": 8.4,
+    "avg_enjoyment": 7.6,
+    "professors": []
+  },
+  "CS 3410": {
+    "course_id": "CS 3410",
+    "subject": "CS",
+    "title": "Computer System Organization and Programming",
+    "avg_difficulty": 8.1,
+    "avg_enjoyment": 7.6,
+    "professors": []
+  },
+  "CS 3700": {
+    "course_id": "CS 3700",
+    "subject": "CS",
+    "title": "Foundations of AI Reasoning and Decision-Making",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 9.0,
+    "professors": []
+  },
+  "CS 3780": {
+    "course_id": "CS 3780",
+    "subject": "CS",
+    "title": "Introduction to Machine Learning",
+    "avg_difficulty": 8.2,
+    "avg_enjoyment": 9.8,
+    "professors": []
+  },
+  "CS 4090": {
+    "course_id": "CS 4090",
+    "subject": "CS",
+    "title": "Teaching Experience in Computer Science",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 8.3,
+    "professors": []
+  },
+  "CS 4110": {
+    "course_id": "CS 4110",
+    "subject": "CS",
+    "title": "Programming Languages and Logics",
+    "avg_difficulty": 8.8,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "CS 4210": {
+    "course_id": "CS 4210",
+    "subject": "CS",
+    "title": "Numerical Analysis and Differential Equations",
+    "avg_difficulty": 8.8,
+    "avg_enjoyment": 8.1,
+    "professors": []
+  },
+  "CS 4320": {
+    "course_id": "CS 4320",
+    "subject": "CS",
+    "title": "Introduction to Database Systems",
+    "avg_difficulty": 9.6,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "CS 4411": {
+    "course_id": "CS 4411",
+    "subject": "CS",
+    "title": "Practicum in Operating Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.7,
+    "professors": []
+  },
+  "CS 4414": {
+    "course_id": "CS 4414",
+    "subject": "CS",
+    "title": "Systems Programming",
+    "avg_difficulty": 9.7,
+    "avg_enjoyment": 8.3,
+    "professors": []
+  },
+  "CS 4420": {
+    "course_id": "CS 4420",
+    "subject": "CS",
+    "title": "Computer Architecture",
+    "avg_difficulty": 9.0,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "CS 4620": {
+    "course_id": "CS 4620",
+    "subject": "CS",
+    "title": "Introduction to Computer Graphics",
+    "avg_difficulty": 9.1,
+    "avg_enjoyment": 9.9,
+    "professors": []
+  },
+  "CS 4621": {
+    "course_id": "CS 4621",
+    "subject": "CS",
+    "title": "Computer Graphics Practicum",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 4701": {
+    "course_id": "CS 4701",
+    "subject": "CS",
+    "title": "Practicum in Artificial Intelligence",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 4750": {
+    "course_id": "CS 4750",
+    "subject": "CS",
+    "title": "Foundations of Robotics",
+    "avg_difficulty": 8.9,
+    "avg_enjoyment": 7.8,
+    "professors": []
+  },
+  "CS 4754": {
+    "course_id": "CS 4754",
+    "subject": "CS",
+    "title": "Re-Designing Robots",
+    "avg_difficulty": 9.3,
+    "avg_enjoyment": 8.2,
+    "professors": []
+  },
+  "CS 4775": {
+    "course_id": "CS 4775",
+    "subject": "CS",
+    "title": "Computational Genetics and Genomics",
+    "avg_difficulty": 8.9,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "CS 4787": {
+    "course_id": "CS 4787",
+    "subject": "CS",
+    "title": "Principles of Large-Scale Machine Learning Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 4820": {
+    "course_id": "CS 4820",
+    "subject": "CS",
+    "title": "Introduction to Analysis of Algorithms",
+    "avg_difficulty": 9.6,
+    "avg_enjoyment": 8.7,
+    "professors": []
+  },
+  "CS 4830": {
+    "course_id": "CS 4830",
+    "subject": "CS",
+    "title": "Introduction to Cryptography",
+    "avg_difficulty": 9.3,
+    "avg_enjoyment": 9.5,
+    "professors": []
+  },
+  "CS 4997": {
+    "course_id": "CS 4997",
+    "subject": "CS",
+    "title": "Practical Training in Computer Science",
+    "avg_difficulty": 9.7,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "CS 4998": {
+    "course_id": "CS 4998",
+    "subject": "CS",
+    "title": "Team Projects",
+    "avg_difficulty": 9.6,
+    "avg_enjoyment": 9.4,
+    "professors": []
+  },
+  "CS 4999": {
+    "course_id": "CS 4999",
+    "subject": "CS",
+    "title": "Independent Reading and Research",
+    "avg_difficulty": 9.1,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "CS 5110": {
+    "course_id": "CS 5110",
+    "subject": "CS",
+    "title": "Programming Languages and Logics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.4,
+    "professors": []
+  },
+  "CS 5112": {
+    "course_id": "CS 5112",
+    "subject": "CS",
+    "title": "Algorithms and Data Structures for Applications",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.5,
+    "professors": []
+  },
+  "CS 5154": {
+    "course_id": "CS 5154",
+    "subject": "CS",
+    "title": "Software Testing",
+    "avg_difficulty": 9.8,
+    "avg_enjoyment": 8.3,
+    "professors": []
+  },
+  "CS 5306": {
+    "course_id": "CS 5306",
+    "subject": "CS",
+    "title": "Crowdsourcing and Human Computation",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "CS 5320": {
+    "course_id": "CS 5320",
+    "subject": "CS",
+    "title": "Introduction to Database Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "CS 5342": {
+    "course_id": "CS 5342",
+    "subject": "CS",
+    "title": "Trust and Safety: Platforms, Policies, Products",
+    "avg_difficulty": 9.7,
+    "avg_enjoyment": 8.6,
+    "professors": []
+  },
+  "CS 5411": {
+    "course_id": "CS 5411",
+    "subject": "CS",
+    "title": "Practicum in Operating Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5414": {
+    "course_id": "CS 5414",
+    "subject": "CS",
+    "title": "Distributed Computing Principles",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.4,
+    "professors": []
+  },
+  "CS 5416": {
+    "course_id": "CS 5416",
+    "subject": "CS",
+    "title": "Cloud Computing and ML Hosting",
+    "avg_difficulty": 9.7,
+    "avg_enjoyment": 8.6,
+    "professors": []
+  },
+  "CS 5424": {
+    "course_id": "CS 5424",
+    "subject": "CS",
+    "title": "Developing and Designing Interactive Devices",
+    "avg_difficulty": 9.9,
+    "avg_enjoyment": 8.8,
+    "professors": []
+  },
+  "CS 5434": {
+    "course_id": "CS 5434",
+    "subject": "CS",
+    "title": "Trustworthy AI",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.9,
+    "professors": []
+  },
+  "CS 5470": {
+    "course_id": "CS 5470",
+    "subject": "CS",
+    "title": "Systems for Large-Scale ML",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.0,
+    "professors": []
+  },
+  "CS 5620": {
+    "course_id": "CS 5620",
+    "subject": "CS",
+    "title": "Introduction to Computer Graphics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5621": {
+    "course_id": "CS 5621",
+    "subject": "CS",
+    "title": "Computer Graphics Practicum",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5650": {
+    "course_id": "CS 5650",
+    "subject": "CS",
+    "title": "Virtual and Augmented Reality",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.7,
+    "professors": []
+  },
+  "CS 5670": {
+    "course_id": "CS 5670",
+    "subject": "CS",
+    "title": "Introduction to Computer Vision",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5672": {
+    "course_id": "CS 5672",
+    "subject": "CS",
+    "title": "Frontiers of Computer Vision",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5682": {
+    "course_id": "CS 5682",
+    "subject": "CS",
+    "title": "HCI and Design",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.6,
+    "professors": []
+  },
+  "CS 5700": {
+    "course_id": "CS 5700",
+    "subject": "CS",
+    "title": "Foundations of AI Reasoning and Decision-Making",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5727": {
+    "course_id": "CS 5727",
+    "subject": "CS",
+    "title": "Optimization Methods",
+    "avg_difficulty": 9.8,
+    "avg_enjoyment": 8.2,
+    "professors": []
+  },
+  "CS 5750": {
+    "course_id": "CS 5750",
+    "subject": "CS",
+    "title": "Foundations of Robotics",
+    "avg_difficulty": 9.9,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "CS 5754": {
+    "course_id": "CS 5754",
+    "subject": "CS",
+    "title": "Modern Computer Systems and Architecture",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "CS 5777": {
+    "course_id": "CS 5777",
+    "subject": "CS",
+    "title": "Principles of Large-Scale Machine Learning Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5780": {
+    "course_id": "CS 5780",
+    "subject": "CS",
+    "title": "Introduction to Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5781": {
+    "course_id": "CS 5781",
+    "subject": "CS",
+    "title": "Machine Learning Engineering",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5785": {
+    "course_id": "CS 5785",
+    "subject": "CS",
+    "title": "Applied Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 5787": {
+    "course_id": "CS 5787",
+    "subject": "CS",
+    "title": "Deep Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.8,
+    "professors": []
+  },
+  "CS 5820": {
+    "course_id": "CS 5820",
+    "subject": "CS",
+    "title": "Analysis of Algorithms",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.6,
+    "professors": []
+  },
+  "CS 5830": {
+    "course_id": "CS 5830",
+    "subject": "CS",
+    "title": "Cryptography",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.2,
+    "professors": []
+  },
+  "CS 5998": {
+    "course_id": "CS 5998",
+    "subject": "CS",
+    "title": "Master of Engineering Internship",
+    "avg_difficulty": 9.7,
+    "avg_enjoyment": 8.4,
+    "professors": []
+  },
+  "CS 5999": {
+    "course_id": "CS 5999",
+    "subject": "CS",
+    "title": "Master of Engineering Project",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.8,
+    "professors": []
+  },
+  "CS 6006": {
+    "course_id": "CS 6006",
+    "subject": "CS",
+    "title": "Succeeding in the Graduate Environment",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.8,
+    "professors": []
+  },
+  "CS 6117": {
+    "course_id": "CS 6117",
+    "subject": "CS",
+    "title": "Category Theory for Computer Scientists",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "CS 6120": {
+    "course_id": "CS 6120",
+    "subject": "CS",
+    "title": "Advanced Compilers",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "CS 6125": {
+    "course_id": "CS 6125",
+    "subject": "CS",
+    "title": "Non-Ideal Algorithmic Fairness",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6158": {
+    "course_id": "CS 6158",
+    "subject": "CS",
+    "title": "Software Engineering in the Era of Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6210": {
+    "course_id": "CS 6210",
+    "subject": "CS",
+    "title": "Matrix Computations",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "CS 6410": {
+    "course_id": "CS 6410",
+    "subject": "CS",
+    "title": "Advanced Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "CS 6703": {
+    "course_id": "CS 6703",
+    "subject": "CS",
+    "title": "AI for Science",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6741": {
+    "course_id": "CS 6741",
+    "subject": "CS",
+    "title": "Topics in Natural Language Processing and Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6742": {
+    "course_id": "CS 6742",
+    "subject": "CS",
+    "title": "Natural Language Processing and Social Interaction",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.1,
+    "professors": []
+  },
+  "CS 6752": {
+    "course_id": "CS 6752",
+    "subject": "CS",
+    "title": "Formal Methods for Robotics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.7,
+    "professors": []
+  },
+  "CS 6758": {
+    "course_id": "CS 6758",
+    "subject": "CS",
+    "title": "Deep Learning for Robotics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.0,
+    "professors": []
+  },
+  "CS 6783": {
+    "course_id": "CS 6783",
+    "subject": "CS",
+    "title": "Machine Learning Theory",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6784": {
+    "course_id": "CS 6784",
+    "subject": "CS",
+    "title": "Advanced Topics in Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6820": {
+    "course_id": "CS 6820",
+    "subject": "CS",
+    "title": "Analysis of Algorithms",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.2,
+    "professors": []
+  },
+  "CS 6830": {
+    "course_id": "CS 6830",
+    "subject": "CS",
+    "title": "Cryptography",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.8,
+    "professors": []
+  },
+  "CS 6832": {
+    "course_id": "CS 6832",
+    "subject": "CS",
+    "title": "Quantum Cryptography",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "CS 6840": {
+    "course_id": "CS 6840",
+    "subject": "CS",
+    "title": "Algorithmic Game Theory",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 6861": {
+    "course_id": "CS 6861",
+    "subject": "CS",
+    "title": "Introduction to Kleene Algebra",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.5,
+    "professors": []
+  },
+  "CS 7090": {
+    "course_id": "CS 7090",
+    "subject": "CS",
+    "title": "Computer Science Colloquium",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "CS 7190": {
+    "course_id": "CS 7190",
+    "subject": "CS",
+    "title": "Seminar in Programming Languages",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.5,
+    "professors": []
+  },
+  "CS 7290": {
+    "course_id": "CS 7290",
+    "subject": "CS",
+    "title": "Seminar on Scientific Computing and Numerics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.2,
+    "professors": []
+  },
+  "CS 7390": {
+    "course_id": "CS 7390",
+    "subject": "CS",
+    "title": "Database Seminar",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "CS 7490": {
+    "course_id": "CS 7490",
+    "subject": "CS",
+    "title": "Systems Research Seminar",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.8,
+    "professors": []
+  },
+  "CS 7690": {
+    "course_id": "CS 7690",
+    "subject": "CS",
+    "title": "Computer Graphics and Vision Seminar",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 7790": {
+    "course_id": "CS 7790",
+    "subject": "CS",
+    "title": "Seminar in Artificial Intelligence",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 7792": {
+    "course_id": "CS 7792",
+    "subject": "CS",
+    "title": "Special Topics in Machine Learning",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "CS 7794": {
+    "course_id": "CS 7794",
+    "subject": "CS",
+    "title": "Seminar in Natural Language Understanding",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.5,
+    "professors": []
+  },
+  "CS 7796": {
+    "course_id": "CS 7796",
+    "subject": "CS",
+    "title": "Robotics Seminar",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "CS 7800": {
+    "course_id": "CS 7800",
+    "subject": "CS",
+    "title": "Topics in Theory of Computing",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.4,
+    "professors": []
+  },
+  "CS 7890": {
+    "course_id": "CS 7890",
+    "subject": "CS",
+    "title": "Seminar in Theory of Algorithms and Computing",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "CS 7999": {
+    "course_id": "CS 7999",
+    "subject": "CS",
+    "title": "Independent Research",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "MATH 1006": {
+    "course_id": "MATH 1006",
+    "subject": "MATH",
+    "title": "Academic Support for MATH 1106",
+    "avg_difficulty": 5.5,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "MATH 1011": {
+    "course_id": "MATH 1011",
+    "subject": "MATH",
+    "title": "Academic Support for MATH 1110",
+    "avg_difficulty": 6.1,
+    "avg_enjoyment": 6.7,
+    "professors": []
+  },
+  "MATH 1101": {
+    "course_id": "MATH 1101",
+    "subject": "MATH",
+    "title": "Calculus Preparation",
+    "avg_difficulty": 6.1,
+    "avg_enjoyment": 6.3,
+    "professors": []
+  },
+  "MATH 1106": {
+    "course_id": "MATH 1106",
+    "subject": "MATH",
+    "title": "Modeling with Calculus for the Life Sciences",
+    "avg_difficulty": 6.0,
+    "avg_enjoyment": 6.4,
+    "professors": []
+  },
+  "MATH 1110": {
+    "course_id": "MATH 1110",
+    "subject": "MATH",
+    "title": "Calculus I",
+    "avg_difficulty": 5.6,
+    "avg_enjoyment": 6.7,
+    "professors": []
+  },
+  "MATH 1120": {
+    "course_id": "MATH 1120",
+    "subject": "MATH",
+    "title": "Calculus II",
+    "avg_difficulty": 5.9,
+    "avg_enjoyment": 6.3,
+    "professors": []
+  },
+  "MATH 1300": {
+    "course_id": "MATH 1300",
+    "subject": "MATH",
+    "title": "Mathematical Explorations",
+    "avg_difficulty": 5.7,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "MATH 1710": {
+    "course_id": "MATH 1710",
+    "subject": "MATH",
+    "title": "Statistical Theory and Application in the Real World",
+    "avg_difficulty": 6.4,
+    "avg_enjoyment": 6.4,
+    "professors": []
+  },
+  "MATH 1890": {
+    "course_id": "MATH 1890",
+    "subject": "MATH",
+    "title": "FWS: Writing in Mathematics",
+    "avg_difficulty": 5.8,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "MATH 1910": {
+    "course_id": "MATH 1910",
+    "subject": "MATH",
+    "title": "Calculus for Engineers",
+    "avg_difficulty": 5.9,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "MATH 1920": {
+    "course_id": "MATH 1920",
+    "subject": "MATH",
+    "title": "Multivariable Calculus for Engineers",
+    "avg_difficulty": 6.0,
+    "avg_enjoyment": 6.6,
+    "professors": []
+  },
+  "MATH 2210": {
+    "course_id": "MATH 2210",
+    "subject": "MATH",
+    "title": "Linear Algebra",
+    "avg_difficulty": 7.1,
+    "avg_enjoyment": 6.8,
+    "professors": []
+  },
+  "MATH 2220": {
+    "course_id": "MATH 2220",
+    "subject": "MATH",
+    "title": "Multivariable Calculus",
+    "avg_difficulty": 7.0,
+    "avg_enjoyment": 7.1,
+    "professors": []
+  },
+  "MATH 2230": {
+    "course_id": "MATH 2230",
+    "subject": "MATH",
+    "title": "Theoretical Linear Algebra and Calculus",
+    "avg_difficulty": 7.5,
+    "avg_enjoyment": 7.0,
+    "professors": []
+  },
+  "MATH 2310": {
+    "course_id": "MATH 2310",
+    "subject": "MATH",
+    "title": "Linear Algebra for Data Science",
+    "avg_difficulty": 6.6,
+    "avg_enjoyment": 7.1,
+    "professors": []
+  },
+  "MATH 2930": {
+    "course_id": "MATH 2930",
+    "subject": "MATH",
+    "title": "Differential Equations for Engineers",
+    "avg_difficulty": 6.6,
+    "avg_enjoyment": 7.1,
+    "professors": []
+  },
+  "MATH 2940": {
+    "course_id": "MATH 2940",
+    "subject": "MATH",
+    "title": "Linear Algebra for Engineers",
+    "avg_difficulty": 6.7,
+    "avg_enjoyment": 6.7,
+    "professors": []
+  },
+  "MATH 3040": {
+    "course_id": "MATH 3040",
+    "subject": "MATH",
+    "title": "Prove It!",
+    "avg_difficulty": 7.8,
+    "avg_enjoyment": 7.7,
+    "professors": []
+  },
+  "MATH 3110": {
+    "course_id": "MATH 3110",
+    "subject": "MATH",
+    "title": "Introduction to Analysis",
+    "avg_difficulty": 8.1,
+    "avg_enjoyment": 7.8,
+    "professors": []
+  },
+  "MATH 3210": {
+    "course_id": "MATH 3210",
+    "subject": "MATH",
+    "title": "Manifolds and Differential Forms",
+    "avg_difficulty": 7.6,
+    "avg_enjoyment": 7.3,
+    "professors": []
+  },
+  "MATH 3270": {
+    "course_id": "MATH 3270",
+    "subject": "MATH",
+    "title": "Introduction to Ordinary Differential Equations",
+    "avg_difficulty": 7.2,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "MATH 3320": {
+    "course_id": "MATH 3320",
+    "subject": "MATH",
+    "title": "Introduction to Number Theory",
+    "avg_difficulty": 7.9,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "MATH 4040": {
+    "course_id": "MATH 4040",
+    "subject": "MATH",
+    "title": "Patterns, Proofs, and Problems",
+    "avg_difficulty": 9.5,
+    "avg_enjoyment": 7.7,
+    "professors": []
+  },
+  "MATH 4130": {
+    "course_id": "MATH 4130",
+    "subject": "MATH",
+    "title": "Honors Introduction to Analysis I",
+    "avg_difficulty": 9.3,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "MATH 4220": {
+    "course_id": "MATH 4220",
+    "subject": "MATH",
+    "title": "Applied Complex Analysis",
+    "avg_difficulty": 9.5,
+    "avg_enjoyment": 7.5,
+    "professors": []
+  },
+  "MATH 4250": {
+    "course_id": "MATH 4250",
+    "subject": "MATH",
+    "title": "Numerical Analysis and Differential Equations",
+    "avg_difficulty": 9.6,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "MATH 4310": {
+    "course_id": "MATH 4310",
+    "subject": "MATH",
+    "title": "Linear Algebra",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 8.2,
+    "professors": []
+  },
+  "MATH 4330": {
+    "course_id": "MATH 4330",
+    "subject": "MATH",
+    "title": "Honors Linear Algebra",
+    "avg_difficulty": 8.9,
+    "avg_enjoyment": 8.1,
+    "professors": []
+  },
+  "MATH 4370": {
+    "course_id": "MATH 4370",
+    "subject": "MATH",
+    "title": "Computational Algebra",
+    "avg_difficulty": 8.6,
+    "avg_enjoyment": 8.2,
+    "professors": []
+  },
+  "MATH 4410": {
+    "course_id": "MATH 4410",
+    "subject": "MATH",
+    "title": "Introduction to Combinatorics I",
+    "avg_difficulty": 8.2,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "MATH 4520": {
+    "course_id": "MATH 4520",
+    "subject": "MATH",
+    "title": "Classical Geometries and Modern Applications",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "MATH 4530": {
+    "course_id": "MATH 4530",
+    "subject": "MATH",
+    "title": "Introduction to Topology",
+    "avg_difficulty": 8.5,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "MATH 4710": {
+    "course_id": "MATH 4710",
+    "subject": "MATH",
+    "title": "Basic Probability",
+    "avg_difficulty": 9.1,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "MATH 4900": {
+    "course_id": "MATH 4900",
+    "subject": "MATH",
+    "title": "Supervised Research",
+    "avg_difficulty": 8.8,
+    "avg_enjoyment": 8.1,
+    "professors": []
+  },
+  "MATH 4901": {
+    "course_id": "MATH 4901",
+    "subject": "MATH",
+    "title": "Supervised Reading",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "MATH 4980": {
+    "course_id": "MATH 4980",
+    "subject": "MATH",
+    "title": "Special Study for Mathematics Teaching",
+    "avg_difficulty": 8.7,
+    "avg_enjoyment": 8.0,
+    "professors": []
+  },
+  "MATH 4997": {
+    "course_id": "MATH 4997",
+    "subject": "MATH",
+    "title": "Practical Training in Mathematics",
+    "avg_difficulty": 9.5,
+    "avg_enjoyment": 9.8,
+    "professors": []
+  },
+  "MATH 5080": {
+    "course_id": "MATH 5080",
+    "subject": "MATH",
+    "title": "Special Study for Teachers",
+    "avg_difficulty": 9.6,
+    "avg_enjoyment": 8.6,
+    "professors": []
+  },
+  "MATH 5220": {
+    "course_id": "MATH 5220",
+    "subject": "MATH",
+    "title": "Applied Complex Analysis",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.3,
+    "professors": []
+  },
+  "MATH 5250": {
+    "course_id": "MATH 5250",
+    "subject": "MATH",
+    "title": "Numerical Analysis and Differential Equations",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 7.9,
+    "professors": []
+  },
+  "MATH 5410": {
+    "course_id": "MATH 5410",
+    "subject": "MATH",
+    "title": "Introduction to Combinatorics I",
+    "avg_difficulty": 9.2,
+    "avg_enjoyment": 9.1,
+    "professors": []
+  },
+  "MATH 6110": {
+    "course_id": "MATH 6110",
+    "subject": "MATH",
+    "title": "Real Analysis",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.7,
+    "professors": []
+  },
+  "MATH 6150": {
+    "course_id": "MATH 6150",
+    "subject": "MATH",
+    "title": "Partial Differential Equations",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "MATH 6210": {
+    "course_id": "MATH 6210",
+    "subject": "MATH",
+    "title": "Measure Theory and Lebesgue Integration",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "MATH 6260": {
+    "course_id": "MATH 6260",
+    "subject": "MATH",
+    "title": "Dynamical Systems",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.4,
+    "professors": []
+  },
+  "MATH 6310": {
+    "course_id": "MATH 6310",
+    "subject": "MATH",
+    "title": "Algebra",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.0,
+    "professors": []
+  },
+  "MATH 6330": {
+    "course_id": "MATH 6330",
+    "subject": "MATH",
+    "title": "Noncommutative Algebra",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.1,
+    "professors": []
+  },
+  "MATH 6390": {
+    "course_id": "MATH 6390",
+    "subject": "MATH",
+    "title": "Lie Groups and Lie Algebras",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "MATH 6410": {
+    "course_id": "MATH 6410",
+    "subject": "MATH",
+    "title": "Enumerative Combinatorics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.8,
+    "professors": []
+  },
+  "MATH 6520": {
+    "course_id": "MATH 6520",
+    "subject": "MATH",
+    "title": "Differentiable Manifolds",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.2,
+    "professors": []
+  },
+  "MATH 6530": {
+    "course_id": "MATH 6530",
+    "subject": "MATH",
+    "title": "K-Theory and Characteristic Classes",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "MATH 6710": {
+    "course_id": "MATH 6710",
+    "subject": "MATH",
+    "title": "Probability Theory I",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.5,
+    "professors": []
+  },
+  "MATH 6840": {
+    "course_id": "MATH 6840",
+    "subject": "MATH",
+    "title": "Recursion Theory",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.1,
+    "professors": []
+  },
+  "MATH 7130": {
+    "course_id": "MATH 7130",
+    "subject": "MATH",
+    "title": "Functional Analysis",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 8.9,
+    "professors": []
+  },
+  "MATH 7290": {
+    "course_id": "MATH 7290",
+    "subject": "MATH",
+    "title": "Seminar on Scientific Computing and Numerics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.6,
+    "professors": []
+  },
+  "MATH 7370": {
+    "course_id": "MATH 7370",
+    "subject": "MATH",
+    "title": "Topics in Number Theory",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "MATH 7410": {
+    "course_id": "MATH 7410",
+    "subject": "MATH",
+    "title": "Topics in Combinatorics",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.4,
+    "professors": []
+  },
+  "MATH 7670": {
+    "course_id": "MATH 7670",
+    "subject": "MATH",
+    "title": "Topics in Algebraic Geometry",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 10.0,
+    "professors": []
+  },
+  "MATH 7740": {
+    "course_id": "MATH 7740",
+    "subject": "MATH",
+    "title": "Statistical Learning Theory",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.2,
+    "professors": []
+  },
+  "MATH 7810": {
+    "course_id": "MATH 7810",
+    "subject": "MATH",
+    "title": "Seminar in Logic",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.3,
+    "professors": []
+  },
+  "MATH 7900": {
+    "course_id": "MATH 7900",
+    "subject": "MATH",
+    "title": "Supervised Reading and Research",
+    "avg_difficulty": 10.0,
+    "avg_enjoyment": 9.4,
+    "professors": []
+  }
+}
