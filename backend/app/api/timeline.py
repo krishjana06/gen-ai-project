@@ -6,12 +6,18 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from app.services.timeline_planner import TimelinePlanner
+from pathlib import Path
 import logging
 import json
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+# Paths to data files (use relative paths for deployment)
+DATA_DIR = Path(__file__).parent.parent.parent / "data"
+GRAPH_FILE = DATA_DIR / "graph_data.json"
+PREREQ_FILE = DATA_DIR / "prerequisites.json"
 
 
 class TimelineRequest(BaseModel):
@@ -40,20 +46,26 @@ async def plan_timeline(request: TimelineRequest):
     try:
         # Load available courses from graph data
         available_courses = []
-        try:
-            with open('/Users/krishjana/Desktop/gen-ai-project/backend/data/graph_data.json', 'r') as f:
-                graph_data = json.load(f)
-                available_courses = graph_data.get('nodes', [])
-        except Exception as e:
-            logger.warning(f"Could not load course data: {e}")
+        if GRAPH_FILE.exists():
+            try:
+                with open(GRAPH_FILE, 'r') as f:
+                    graph_data = json.load(f)
+                    available_courses = graph_data.get('nodes', [])
+            except Exception as e:
+                logger.warning(f"Could not load course data: {e}")
+        else:
+            logger.error(f"Graph file not found: {GRAPH_FILE}")
 
         # Load prerequisites
         prereqs = {}
-        try:
-            with open('/Users/krishjana/Desktop/gen-ai-project/backend/data/prerequisites.json', 'r') as f:
-                prereqs = json.load(f)
-        except Exception as e:
-            logger.warning(f"Could not load prerequisites: {e}")
+        if PREREQ_FILE.exists():
+            try:
+                with open(PREREQ_FILE, 'r') as f:
+                    prereqs = json.load(f)
+            except Exception as e:
+                logger.warning(f"Could not load prerequisites: {e}")
+        else:
+            logger.error(f"Prerequisites file not found: {PREREQ_FILE}")
 
         # Generate timelines
         planner = TimelinePlanner()
