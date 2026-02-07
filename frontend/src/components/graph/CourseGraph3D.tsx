@@ -20,33 +20,32 @@ export function CourseGraph3D() {
     return enhanceGraphForDisplay(graphData);
   }, [graphData]);
 
-  const getNodeColor = (node: CourseNode) => {
-    if (highlightedNodes.has(node.id)) {
+  const getNodeColor = (node: any) => {
+    const courseNode = node as CourseNode;
+    if (highlightedNodes.has(courseNode.id)) {
       return '#D44A3C';
     }
-    if (selectedNode?.id === node.id) {
+    if (selectedNode?.id === courseNode.id) {
       return '#FFEB3B';
     }
-    return getSubjectColor(node.subject);
+    return getSubjectColor(courseNode.subject);
   };
 
-  const getNodeSize = (node: CourseNode) => {
-    return 4 + (node.centrality * 60);
+  const getNodeSize = (node: any) => {
+    const courseNode = node as CourseNode;
+    return 4 + (courseNode.centrality * 60);
   };
 
-  const getNodeOpacity = (node: CourseNode) => {
-    return 0.6 + (node.enjoyment_score / 10) * 0.4;
-  };
-
-  const getNodeLabel = (node: CourseNode) => {
+  const getNodeLabel = (node: any) => {
+    const courseNode = node as CourseNode;
     return `
       <div style="background: rgba(0, 0, 0, 0.8); padding: 8px; border-radius: 4px; color: white; font-family: sans-serif;">
-        <strong>${node.id}</strong><br/>
-        ${node.title}<br/>
+        <strong>${courseNode.id}</strong><br/>
+        ${courseNode.title}<br/>
         <hr style="margin: 4px 0; border-color: #555;"/>
-        Difficulty: ${node.difficulty_score.toFixed(1)}/10<br/>
-        Enjoyment: ${node.enjoyment_score.toFixed(1)}/10<br/>
-        Centrality: ${(node.centrality * 100).toFixed(1)}
+        Difficulty: ${courseNode.difficulty_score.toFixed(1)}/10<br/>
+        Enjoyment: ${courseNode.enjoyment_score.toFixed(1)}/10<br/>
+        Centrality: ${(courseNode.centrality * 100).toFixed(1)}
       </div>
     `;
   };
@@ -67,7 +66,7 @@ export function CourseGraph3D() {
         nodeLabel={getNodeLabel}
         nodeColor={getNodeColor}
         nodeVal={getNodeSize}
-        nodeOpacity={getNodeOpacity}
+        nodeOpacity={0.9}
         nodeRelSize={1}
         onNodeClick={handleNodeClick}
         linkDirectionalArrowLength={3.5}

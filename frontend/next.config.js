@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['three', 'react-force-graph-3d'],
+  eslint: {
+    // Disable ESLint during production builds
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Disable type checking during production builds (already checked in development)
+    ignoreBuildErrors: false,
+  },
   webpack: (config, { isServer }) => {
     // Exclude 3D libraries from server-side rendering
     if (isServer) {

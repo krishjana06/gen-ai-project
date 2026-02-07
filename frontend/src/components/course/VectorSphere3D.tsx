@@ -79,25 +79,28 @@ export function VectorSphere3D({ course, allCourses, onClose }: VectorSphere3DPr
     }
   }, [course]);
 
-  const getNodeColor = (node: CourseNode) => {
-    if (node.id === course.id) {
+  const getNodeColor = (node: any) => {
+    const courseNode = node as CourseNode;
+    if (courseNode.id === course.id) {
       return '#FFEB3B';
     }
-    return getSubjectColor(node.subject);
+    return getSubjectColor(courseNode.subject);
   };
 
-  const getNodeSize = (node: CourseNode) => {
-    if (node.id === course.id) {
+  const getNodeSize = (node: any) => {
+    const courseNode = node as CourseNode;
+    if (courseNode.id === course.id) {
       return 15;
     }
     return 8;
   };
 
-  const getNodeLabel = (node: CourseNode) => {
+  const getNodeLabel = (node: any) => {
+    const courseNode = node as CourseNode;
     return `
       <div style="background: rgba(0, 0, 0, 0.9); padding: 10px; border-radius: 6px; color: white; font-family: sans-serif; max-width: 250px;">
-        <strong style="font-size: 14px;">${node.id}</strong><br/>
-        <span style="font-size: 12px;">${node.title}</span>
+        <strong style="font-size: 14px;">${courseNode.id}</strong><br/>
+        <span style="font-size: 12px;">${courseNode.title}</span>
       </div>
     `;
   };
