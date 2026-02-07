@@ -38,8 +38,10 @@ export default function StudyMaterialCard({ courseCode, className = '' }: StudyM
     setLoading(true);
     setError('');
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
     try {
-      const response = await fetch(`http://localhost:8000/api/study-materials/${courseCode}`);
+      const response = await fetch(`${API_URL}/api/study-materials/${encodeURIComponent(courseCode)}`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch study materials');

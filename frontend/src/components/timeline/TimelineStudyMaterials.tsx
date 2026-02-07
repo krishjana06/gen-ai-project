@@ -55,12 +55,14 @@ export function TimelineStudyMaterials({ semesters }: TimelineStudyMaterialsProp
     // Fetch materials for the first 3 courses (to avoid overwhelming the UI)
     const coursesToFetch = uniqueCourses.slice(0, 6);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
     await Promise.all(
       coursesToFetch.map(async (course) => {
         try {
-          const normalizedCode = course.code.replace(/\s+/g, '');
+          // Keep the space in course code (backend expects "CS 3110" not "CS3110")
           const response = await fetch(
-            `http://localhost:8000/api/study-materials/${normalizedCode}`
+            `${API_URL}/api/study-materials/${encodeURIComponent(course.code)}`
           );
 
           if (response.ok) {

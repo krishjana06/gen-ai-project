@@ -68,12 +68,14 @@ export default function ResumeToTimelineForm() {
     setParsing(true);
     setError('');
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
     try {
       // Step 1: Upload and parse resume
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:8000/api/upload-resume', {
+      const response = await fetch(`${API_URL}/api/upload-resume`, {
         method: 'POST',
         body: formData,
       });
@@ -103,6 +105,8 @@ export default function ResumeToTimelineForm() {
     setGenerating(true);
     setTimelineGenerating(true);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
     try {
       // Map academic level to semester
       const semesterMap: Record<string, string> = {
@@ -129,7 +133,7 @@ export default function ResumeToTimelineForm() {
         resume_data: resumeData,
       };
 
-      const response = await fetch('http://localhost:8000/api/plan-timeline', {
+      const response = await fetch(`${API_URL}/api/plan-timeline`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

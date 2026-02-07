@@ -19,8 +19,9 @@ export function CourseDetailModal({ courseCode, onClose }: CourseDetailModalProp
 
   useEffect(() => {
     const fetchCourseData = async () => {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
       try {
-        const response = await fetch('http://localhost:8000/api/graph');
+        const response = await fetch(`${API_URL}/api/graph`);
         const data = await response.json();
 
         const course = data.nodes.find((n: CourseNode) => n.id === courseCode);
