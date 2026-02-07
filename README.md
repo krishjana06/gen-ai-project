@@ -194,18 +194,11 @@ This is a personal project, but suggestions are welcome! Feel free to:
 
 ---
 
-## 📄 License
-
-MIT License - feel free to use this code for your own projects!
-
----
-
 ## 🙏 Acknowledgments
 
 - **Cornell University** - Course data from official roster
 - **OpenAI** - GPT-4o-mini for AI-powered features
 - **Rate My Professors** - Community sentiment data
-- Built with **[Claude Code](https://claude.ai/claude-code)** ⚡
 
 ---
 
